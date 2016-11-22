@@ -1,0 +1,53 @@
+.text-header{
+
+	font-family: 'Audiowide', cursive;
+	font-size: 22px;
+	
+}
+ul>li>a{
+
+	font-color: black;
+}
+
+#content-home{
+
+	background-image: url("../img/nice-girl.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 1000px;
+}
+
+#content-about{
+
+	background-color: #F9F9F9;
+	min-height: 920px;
+}
+
+.section-contact{
+
+	font-family: 'Audiowide', cursive;
+	color: white;
+	background-color: #6666FF;
+	background-size: cover;
+	background-position: center;
+	height: 200px;
+	
+}
+
+#aboutUsContent_2{
+	display:none;
+}
+
+#aboutUsButton{
+	height: 180px; 
+	background-color: #6666FF;
+	padding-top: 50px;
+	border-radius: 10px;
+}
+
+#aboutUsButton:hover{
+	background-color: #b2b2ff;
+}
