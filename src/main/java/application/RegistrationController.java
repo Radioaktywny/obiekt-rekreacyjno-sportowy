@@ -5,15 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Created by Marcin on 22.11.2016.
+ * Created by cos on 05.12.2016.
  */
 @Controller
-public class IndexController {
-
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String getView() {
-        return "index";
-    }
-
-
+public class RegistrationController {
+    @RequestMapping(value = "/registration" , method = RequestMethod.GET)
+    public String getRegistration() {return  "registration";}
 }
