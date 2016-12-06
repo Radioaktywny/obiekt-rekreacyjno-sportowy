@@ -1,8 +1,5 @@
-package application.api.security.service;
+package com.ors.service;
 
-/**
- * Created by Marcin on 05.12.2016.
- */
 public interface SecurityService {
     String findLoggedInUsername();
 

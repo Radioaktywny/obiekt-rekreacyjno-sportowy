@@ -114,11 +114,11 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   `id` int(32) NOT NULL,
   `nazwa_uzytkownika` varchar(128) NOT NULL,
   `haslo` varchar(128) NOT NULL,
-  `poziom_dostepu` enum('USER','ADMINISTRATOR') NOT NULL,
-  `miasto` varchar(64) NOT NULL,
-  `ulica` varchar(64) NOT NULL,
-  `kod_pocztowy` varchar(10) NOT NULL,
-  `numer_telefonu` int(13) NOT NULL,
+  `poziom_dostepu` varchar(128) NOT NULL,
+  `miasto` varchar(64) ,
+  `ulica` varchar(64)  ,
+  `kod_pocztowy` varchar(10) ,
+  `numer_telefonu` int(13) ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
