@@ -17,7 +17,8 @@ public class ObjectController {
 
     @RequestMapping(value = "/obiekt", method = RequestMethod.GET)
     public String object(Model model , Long id) {
-        //System.err.println(objectService.findById(1L)); //przetestowane działa
+       // System.err.println(objectService.findById(3L)); //przetestowane działa
+        model.addAttribute("objectForm", objectService.findById(id));//przykładowe rozwiązanie
         return "obiekt";
     }
 }

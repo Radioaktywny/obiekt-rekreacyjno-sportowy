@@ -48,6 +48,6 @@ public class Object {
     @Override
     public String toString()
     {
-        return "id: " + getId() + "name: "+getName() +"description: "+getDescription();
+        return "id: " + getId() + " name: "+getName() +" description: "+getDescription();
     }
 }
