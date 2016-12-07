@@ -99,7 +99,7 @@ DROP TABLE IF EXISTS `obiekt`;
 CREATE TABLE IF NOT EXISTS `obiekt` (
   `id` int(32) NOT NULL,
   `nazwa` varchar(64) NOT NULL,
-  `opis` int(255) NOT NULL,
+  `opis` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
