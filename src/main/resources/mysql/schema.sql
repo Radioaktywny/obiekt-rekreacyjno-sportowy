@@ -117,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   `poziom_dostepu` varchar(128) NOT NULL,
   `miasto` varchar(64) ,
   `ulica` varchar(64)  ,
+  `adres_email` varchar(64)  ,
   `kod_pocztowy` varchar(10) ,
   `numer_telefonu` int(13) ,
   PRIMARY KEY (`id`)

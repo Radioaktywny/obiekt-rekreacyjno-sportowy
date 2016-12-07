@@ -31,6 +31,10 @@ public class User {
     @Column(name = "poziom_dostepu")
     private String role;
 
+    @NotNull
+    @Column(name = "adres_email")
+    private String email;
+
     @Column(name="miasto")
     private String town;
 
@@ -113,5 +117,13 @@ public class User {
 
     public void setNumberOfPhone(String numberOfPhone) {
         this.numberOfPhone = numberOfPhone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
