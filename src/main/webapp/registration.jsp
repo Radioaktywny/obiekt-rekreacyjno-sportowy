@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <div class="checkbox col-md-8  col-md-offset-3 control-label" style="text-align: left">
                             <label>
-                                <input type="checkbox">Zapoznałem się z treścią regulaminu i wyrażam na niego zgodę
+                                <input type="checkbox" id="rulesRequired" name="test" required>Zapoznałem się z treścią regulaminu i wyrażam na niego zgodę
                             </label>
                         </div>
                     </div>
