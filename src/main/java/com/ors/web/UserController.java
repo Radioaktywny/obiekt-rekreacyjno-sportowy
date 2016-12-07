@@ -64,4 +64,16 @@ public class UserController {
 
         return "login";
     }
+
+    @RequestMapping(value = "/priceList", method = RequestMethod.GET)
+    public String priceList(Model model) {
+
+        return "priceList";
+    }
+
+    @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
+    public String userProfile(Model model) {
+
+        return "userProfile";
+    }
 }

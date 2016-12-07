@@ -34,7 +34,9 @@
         </div>
 
         <div class="col-lg-9 col-md-9 navbar-right" style="height: 130px;">
+            <c:if test="${pageContext.request.userPrincipal.name == null}">
             <div class="col-lg-4 col-lg-offset-8" style="height: 55px; padding-top: 10px;  padding-left: 45px;">
+
                 <button id="userMenu1" class="btn btn-primary" type="button" style="background-color: #6666FF;">
                     <a href="/login" style="color: white"><span>Zaloguj się </span></a>
                 </button>
@@ -42,6 +44,33 @@
                     <a href="/registration" style="color: white"><span>Zarejestruj się</span></a>
                 </button>
             </div>
+            </c:if>
+            <ul class="nav navbar-nav navbar-right">
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <c:url value="/logout" var="logoutUrl" />
+                    <form action="${logoutUrl}" method="post" id="logoutForm">
+                        <input type="hidden" name="${_csrf.parameterName}"
+                               value="${_csrf.token}" />
+                    </form>
+                    <script>
+                        function formSubmit() {
+                            document.getElementById("logoutForm").submit();
+                        }
+                    </script>
+
+                    <c:if test="${pageContext.request.userPrincipal.name != null}">
+                        <ul class="nav navbar-nav navbar-right" style="margin-right: 35px; padding-top: 10px; font-size: 17px;">
+                            <li><a href="userProfile" style="color: black"><strong>Mój profil</strong></a></li>
+                            <li style="padding-top: 5px;">
+                                <ol class="breadcrumb" style="float: left;">
+                                    <li class="active" style="color: black;">Witaj, ${pageContext.request.userPrincipal.name}</li>
+                                    <li><a href="javascript:formSubmit()" style="color: black;"> Wyloguj</a></li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </c:if>
+                </sec:authorize>
+            </ul>
             <div class="col-lg-12" style="height: 65px;">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills text-header  navbar-right">
@@ -51,7 +80,7 @@
                         <li role="presentation"><a href="#content-about">
                             <div style="color: black;">aktualności</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-work">
+                        <li role="presentation"><a href="/priceList">
                             <div style="color: black;">cennik</div>
                         </a></li>
                         <li role="presentation"><a href="#content-contact">
