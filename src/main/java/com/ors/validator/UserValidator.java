@@ -39,5 +39,21 @@ public class UserValidator implements Validator {
         if (!user.getPasswordConfirm().equals(user.getPassword())) {
             errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
         }
+
+        if (user.getEmail().length() < 7) {
+            errors.rejectValue("email", "Size.userForm.email");
+        }
+
+        if (user.getTown().length() == 0) {
+            errors.rejectValue("town", "Size.userForm.town");
+        }
+
+        if (user.getPostKey().length() < 5) {
+            errors.rejectValue("postKey", "Bad.userForm.postKey");
+        }
+
+        if (user.getPostKey().length() == 0) {
+            errors.rejectValue("postKey", "Size.userForm.postKey");
+        }
     }
 }

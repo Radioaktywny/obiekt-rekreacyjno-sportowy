@@ -21,14 +21,14 @@
     <div id="signupbox" style="margin-top:50px" class="col-md-8 col-md-offset-2" data-scrollreveal="enter bottom and move 300px, wait 0.2s">
         <div class="panel"  style="border-color: #5151cc;">
             <div class="panel-heading" style="background-color: #a3a3ff;">
-                <div class="panel-title"  >Sign Up</div>
+                <div class="panel-title"  >Zarejestruj się</div>
 
             </div>
             <div class="panel-body" >
                 <form:form method="POST" modelAttribute="userForm" class="form-signin">
 
                     <div class="form-group">
-                        <label for="username" class="text-left col-md-3 control-label " style="text-align: left">Email</label>
+                        <label for="username" class="text-left col-md-3 control-label " style="text-align: left">Login</label>
                         <div class="col-md-4 " style="margin-right: 150px;">
                             <spring:bind path="username">
                                 <div class="form-group ${status.error ? 'has-error' : ''}">
@@ -71,7 +71,7 @@
                             <spring:bind path="email">
                                 <div class="form-group ${status.error ? 'has-error' : ''}">
                                     <form:input type="text" path="email" class="form-control"
-                                                placeholder="Powtórz hasło"></form:input>
+                                                placeholder="Email"></form:input>
                                     <form:errors path="email"></form:errors>
                                 </div>
                             </spring:bind>
@@ -83,7 +83,7 @@
                         <div class="col-md-4">
                             <spring:bind path="town">
                                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                    <form:input type="text" path="town" class="form-control" placeholder="Ulica"></form:input>
+                                    <form:input type="text" path="town" class="form-control" placeholder="Miasto"></form:input>
                                     <form:errors path="town"></form:errors>
                                 </div>
                             </spring:bind>
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <spring:bind path="postKey">
                                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                    <form:input type="text" path="postKey" class="form-control" placeholder="Miejscowość"></form:input>
+                                    <form:input type="text" path="postKey" class="form-control" placeholder="Kod pocztowy"></form:input>
                                     <form:errors path="postKey"></form:errors>
                                 </div>
                             </spring:bind>
@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <div class="checkbox col-md-8  col-md-offset-3 control-label" style="text-align: left">
                             <label>
-                                <input type="checkbox">Zapoznałem się z treścią regulaminu i wyrażam na niego zgodę
+                                <input type="checkbox" id="rulesRequired" name="test" required>Zapoznałem się z treścią regulaminu i wyrażam na niego zgodę
                             </label>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-package com.ors;
+package com.ors.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

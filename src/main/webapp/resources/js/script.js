@@ -65,3 +65,8 @@ function showContent_2() {
         });
         });
 }
+
+function regulaminRequired() {
+    var x = document.getElementById("rulesRequired").required;
+    document.getElementById("demo").innerHTML = x;
+}

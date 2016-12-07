@@ -9,6 +9,7 @@ import java.util.Set;
  * Created by Marcin on 05.12.2016.
  */
 @Entity
+@Table(name = "uzytkownik")
 public class User {
 
     @Id
