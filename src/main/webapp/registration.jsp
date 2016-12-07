@@ -1,66 +1,126 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="pl_PL">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Create an account</title>
 
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/font-awesome.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>Rejestracja</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<body style="background-color: #F9F9F9;">
 
-<body>
+<div class="container" style=" margin-top: 250px;">
+    <div id="signupbox" style="margin-top:50px" class="col-md-8 col-md-offset-2" data-scrollreveal="enter bottom and move 300px, wait 0.2s">
+        <div class="panel"  style="border-color: #5151cc;">
+            <div class="panel-heading" style="background-color: #a3a3ff;">
+                <div class="panel-title"  >Sign Up</div>
 
-<div class="container">
-
-    <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
-        <spring:bind path="username">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="text" path="username" class="form-control" placeholder="Username"
-                            autofocus="true"></form:input>
-                <form:errors path="username"></form:errors>
             </div>
-        </spring:bind>
+            <div class="panel-body" >
+                <form:form method="POST" modelAttribute="userForm" class="form-signin">
 
-        <spring:bind path="password">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="password" class="form-control" placeholder="Password"></form:input>
-                <form:errors path="password"></form:errors>
+                    <div class="form-group">
+                        <label for="username" class="text-left col-md-3 control-label " style="text-align: left">Email</label>
+                        <div class="col-md-4 " style="margin-right: 150px;">
+                            <spring:bind path="username">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input type="text" path="username" class="form-control" placeholder="Login"
+                                                autofocus="true"></form:input>
+                                    <form:errors path="username"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <div class="form-group">
+                        <label for="password" class="col-md-3 control-label"  style="text-align: left">Hasło</label>
+                        <div class="col-md-4 " style="margin-right: 150px;">
+                            <spring:bind path="password">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input type="password" path="password" class="form-control" placeholder="Hasło"></form:input>
+                                    <form:errors path="password"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-md-3 control-label"  style="text-align: left">Powtórz hasło</label>
+                        <div class="col-md-4 " style="margin-right: 150px;">
+                            <spring:bind path="passwordConfirm">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input type="password" path="passwordConfirm" class="form-control"
+                                                placeholder="Powtórz hasło"></form:input>
+                                    <form:errors path="passwordConfirm"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="col-md-3 control-label"  style="text-align: left">Email</label>
+                        <div class="col-md-4 " style="margin-right: 150px;">
+                            <spring:bind path="email">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input type="text" path="email" class="form-control"
+                                                placeholder="Powtórz hasło"></form:input>
+                                    <form:errors path="email"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="town" class="col-md-3 control-label"  style="text-align: left">Lokalizacja</label>
+                        <div class="col-md-4">
+                            <spring:bind path="town">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input type="text" path="town" class="form-control" placeholder="Ulica"></form:input>
+                                    <form:errors path="town"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                        <div class="col-md-4">
+                            <spring:bind path="postKey">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input type="text" path="postKey" class="form-control" placeholder="Miejscowość"></form:input>
+                                    <form:errors path="postKey"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox col-md-8  col-md-offset-3 control-label" style="text-align: left">
+                            <label>
+                                <input type="checkbox">Zapoznałem się z treścią regulaminu i wyrażam na niego zgodę
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <input type="submit" value="Zarejestruj się" class="btn btn-primary" style="background-color: #6666FF; width: 150px;">
+                        </div>
+                    </div>
+                </form:form>
             </div>
-        </spring:bind>
-
-        <spring:bind path="passwordConfirm">
-            <div class="form-group ${status.error ? 'has-error' : ''}">
-                <form:input type="password" path="passwordConfirm" class="form-control"
-                            placeholder="Confirm your password"></form:input>
-                <form:errors path="passwordConfirm"></form:errors>
-            </div>
-        </spring:bind>
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </form:form>
-
+        </div>
+    </div>
 </div>
-<!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/scrollReveal.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 </body>
 </html>

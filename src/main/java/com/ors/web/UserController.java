@@ -27,6 +27,11 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    public String welcome(Model model) {
+        return "index";
+    }
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("userForm", new User());
@@ -58,10 +63,5 @@ public class UserController {
             model.addAttribute("message", "You have been logged out successfully.");
 
         return "login";
-    }
-
-    @RequestMapping(value = {"/", "/welcome"}, method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "welcome";
     }
 }
