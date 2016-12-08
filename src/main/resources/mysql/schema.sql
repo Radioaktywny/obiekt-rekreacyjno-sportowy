@@ -26,13 +26,15 @@ DROP TABLE IF EXISTS `cennik`;
 CREATE TABLE IF NOT EXISTS `cennik` (
   `id` int(32) NOT NULL,
   `id_obiektu` int(32) NOT NULL,
-  `cena` int(12) NOT NULL,
-  `typ_cennika` enum('KARNET','REZERWACJA') NOT NULL,
-  `czas_karnetu` varchar(10) DEFAULT NULL,
-  `godzina_poczatkowa` varchar(10) DEFAULT NULL,
-  `godzina_koncowa` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_obiektu` (`id_obiektu`)
+  `wynajecie_robocze_taryfa_pierwsza` int(2) NOT NULL,
+  `wynajecie_robocze_taryfa_druga` int(2) NOT NULL,
+  `wynajecie_weekend_taryfa_pierwsza` int(2) NOT NULL,
+  `wynajecie_weekend_taryfa_druga` int(2) NOT NULL,
+  `karnet_robocze_taryfa_pierwsza` int(2) NOT NULL,
+  `karnet_robocze_taryfa_druga` int(2) NOT NULL,
+  `jednorazowe_wejscie` int(2),
+  `godzina_zmiany_taryfy` varchar(5) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -45,11 +47,21 @@ DROP TABLE IF EXISTS `czas_otwarcia_obiektu`;
 CREATE TABLE IF NOT EXISTS `czas_otwarcia_obiektu` (
   `id` int(32) NOT NULL,
   `id_obiektu` int(32) NOT NULL,
-  `dzien_tygodnia` varchar(12) NOT NULL,
-  `godzina_otwarcia` varchar(10) NOT NULL,
-  `godzina_zamkniecia` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_obiektu` (`id_obiektu`)
+  `poniedzialek_otwarcie` varchar(5),
+  `poniedzialek_zamkniecie` varchar(5),
+  `wtorek_otwarcie` varchar(5),
+  `wtorek_zamkniecie` varchar(5),
+  `sroda_otwarcie` varchar(5),
+  `sroda_zamkniecie` varchar(5),
+  `czwartek_otwarcie` varchar(5),
+  `czwartek_zamkniecie` varchar(5),
+  `piatek_otwarcie` varchar(5),
+  `piatek_zamkniecie` varchar(5),
+  `sobota_otwarcie` varchar(5),
+  `sobota_zamkniecie` varchar(5),
+  `niedziela_otwarcie` varchar(5),
+  `niedziela_zamkniecie` varchar(5),
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -131,13 +143,13 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
 -- Ograniczenia dla tabeli `cennik`
 --
 ALTER TABLE `cennik`
-  ADD CONSTRAINT `cennik_ibfk_1` FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
+  ADD FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
 
 --
 -- Ograniczenia dla tabeli `czas_otwarcia_obiektu`
 --
 ALTER TABLE `czas_otwarcia_obiektu`
-  ADD CONSTRAINT `czas_otwarcia_obiektu_ibfk_1` FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
+  ADD FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
 
 --
 -- Ograniczenia dla tabeli `karnet`
