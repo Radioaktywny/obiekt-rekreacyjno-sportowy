@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `czas_otwarcia_obiektu` (
 DROP TABLE IF EXISTS `karnet`;
 CREATE TABLE IF NOT EXISTS `karnet` (
   `id` int(32) NOT NULL,
-  `id_uzytkownika` int(32) NOT NULL,
+  `id_uzytkownika` bigint(20) NOT NULL,
   `id_obiektu` int(32) NOT NULL,
   `data_waznosci` date NOT NULL,
   PRIMARY KEY (`id`),
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `karnet` (
 DROP TABLE IF EXISTS `rezerwacja`;
 CREATE TABLE IF NOT EXISTS `rezerwacja` (
   `id` int(32) NOT NULL,
-  `id_uzytkownika` int(32) NOT NULL,
+  `id_uzytkownika` bigint(20) NOT NULL,
   `id_obiektu` int(32) NOT NULL,
   `dzien_rezerwacji` date NOT NULL,
   `godzina_rezerwacji` varchar(10) NOT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `obiekt` (
 
 DROP TABLE IF EXISTS `uzytkownik`;
 CREATE TABLE IF NOT EXISTS `uzytkownik` (
-  `id` int(32) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `nazwa_uzytkownika` varchar(128) NOT NULL,
   `haslo` varchar(128) NOT NULL,
   `poziom_dostepu` varchar(128) NOT NULL,
@@ -135,6 +135,8 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE `uzytkownik`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Ograniczenia dla zrzutów tabel
 --
@@ -142,6 +144,9 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
 --
 -- Ograniczenia dla tabeli `cennik`
 --
+
+
+
 ALTER TABLE `cennik`
   ADD FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
 
