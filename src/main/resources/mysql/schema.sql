@@ -24,8 +24,8 @@ USE `obiekt_rekreacyjno_sportowy`;
 
 DROP TABLE IF EXISTS `cennik`;
 CREATE TABLE IF NOT EXISTS `cennik` (
-  `id` int(32) NOT NULL,
-  `id_obiektu` int(32) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_obiektu` bigint(20) NOT NULL,
   `wynajecie_robocze_taryfa_pierwsza` int(2) NOT NULL,
   `wynajecie_robocze_taryfa_druga` int(2) NOT NULL,
   `wynajecie_weekend_taryfa_pierwsza` int(2) NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `cennik` (
 
 DROP TABLE IF EXISTS `czas_otwarcia_obiektu`;
 CREATE TABLE IF NOT EXISTS `czas_otwarcia_obiektu` (
-  `id` int(32) NOT NULL,
-  `id_obiektu` int(32) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `id_obiektu` bigint(20) NOT NULL,
   `poniedzialek_otwarcie` varchar(5),
   `poniedzialek_zamkniecie` varchar(5),
   `wtorek_otwarcie` varchar(5),
@@ -72,9 +72,9 @@ CREATE TABLE IF NOT EXISTS `czas_otwarcia_obiektu` (
 
 DROP TABLE IF EXISTS `karnet`;
 CREATE TABLE IF NOT EXISTS `karnet` (
-  `id` int(32) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_uzytkownika` bigint(20) NOT NULL,
-  `id_obiektu` int(32) NOT NULL,
+  `id_obiektu` bigint(20) NOT NULL,
   `data_waznosci` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_obiektu` (`id_obiektu`),
@@ -90,9 +90,9 @@ CREATE TABLE IF NOT EXISTS `karnet` (
 
 DROP TABLE IF EXISTS `rezerwacja`;
 CREATE TABLE IF NOT EXISTS `rezerwacja` (
-  `id` int(32) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_uzytkownika` bigint(20) NOT NULL,
-  `id_obiektu` int(32) NOT NULL,
+  `id_obiektu` bigint(20) NOT NULL,
   `dzien_rezerwacji` date NOT NULL,
   `godzina_rezerwacji` varchar(10) NOT NULL,
   `godzina_zakonczenia_rezerwacji` varchar(10) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `rezerwacja` (
 
 DROP TABLE IF EXISTS `obiekt`;
 CREATE TABLE IF NOT EXISTS `obiekt` (
-  `id` int(32) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `nazwa` varchar(64) NOT NULL,
   `opis` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `obiekt` (
 
 DROP TABLE IF EXISTS `uzytkownik`;
 CREATE TABLE IF NOT EXISTS `uzytkownik` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `nazwa_uzytkownika` varchar(128) NOT NULL,
   `haslo` varchar(128) NOT NULL,
   `poziom_dostepu` varchar(128) NOT NULL,
@@ -135,8 +135,6 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE `uzytkownik`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 -- Ograniczenia dla zrzutów tabel
 --
