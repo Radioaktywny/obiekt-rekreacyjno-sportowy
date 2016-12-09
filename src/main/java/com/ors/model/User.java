@@ -1,9 +1,7 @@
 package com.ors.model;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 /**
  * Created by Marcin on 05.12.2016.
@@ -36,10 +34,10 @@ public class User {
     @Column(name = "adres_email")
     private String email;
 
-    @Column(name="miasto")
+    @Column(name = "miasto")
     private String town;
 
-    @Column(name="ulica")
+    @Column(name = "ulica")
     private String street;
 
     @Column(name = "kod_pocztowy")
