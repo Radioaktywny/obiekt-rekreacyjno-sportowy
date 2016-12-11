@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by bgacek on 08.12.2016.
  */
+
 @Controller
 public class PriceListController
 {
@@ -19,10 +20,10 @@ public class PriceListController
     private PriceListService priceListService;
 
     @RequestMapping(value = "/cennik", method = RequestMethod.GET)
-    public String priceListOfObject()
+    public String priceListsOfAllObjects()
     {
         List<PriceList> priceLists = priceListService.findAll();
 
-        return "";
+        return "cenniki";
     }
 }

@@ -30,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `cennik` (
   `wynajecie_robocze_taryfa_druga` int(2) NOT NULL,
   `wynajecie_weekend_taryfa_pierwsza` int(2) NOT NULL,
   `wynajecie_weekend_taryfa_druga` int(2) NOT NULL,
-  `karnet_robocze_taryfa_pierwsza` int(2) NOT NULL,
-  `karnet_robocze_taryfa_druga` int(2) NOT NULL,
+  `karnet_taryfa_pierwsza` int(2),
+  `karnet_taryfa_druga` int(2),
   `jednorazowe_wejscie` int(2),
   `godzina_zmiany_taryfy` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)

@@ -38,11 +38,11 @@ public class PriceList
     private Integer rentWeekendTariffTwoPrice;
 
     @NotNull
-    @Column(name = "karnet_robocze_taryfa_pierwsza")
+    @Column(name = "karnet_taryfa_pierwsza")
     private Integer subscriptionTariffOnePrice;
 
     @NotNull
-    @Column(name = "karnet_robocze_taryfa_druga")
+    @Column(name = "karnet_taryfa_druga")
     private Integer subscriptionTariffTwoPrice;
 
 
