@@ -1,13 +1,18 @@
 package com.ors.web;
 
-import com.ors.model.PriceList;
-import com.ors.service.PriceListService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+        import com.ors.model.ObjectDutyHours;
+        import com.ors.model.PriceList;
+        import com.ors.service.ObjectDutyHoursService;
+        import com.ors.service.PriceListService;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.web.bind.annotation.RequestMapping;
+        import org.springframework.web.bind.annotation.RequestMethod;
+        import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
+        import javax.servlet.http.HttpServletRequest;
+        import java.util.List;
 
 /**
  * Created by bgacek on 08.12.2016.
@@ -19,11 +24,25 @@ public class PriceListController
     @Autowired
     private PriceListService priceListService;
 
-    @RequestMapping(value = "/cennik", method = RequestMethod.GET)
-    public String priceListsOfAllObjects()
+
+    @RequestMapping(value = "/priceList", method = RequestMethod.GET)
+    public String priceListsOfAllObjects(Model model)
     {
         List<PriceList> priceLists = priceListService.findAll();
 
-        return "cenniki";
+        System.out.println("PRICELIST");
+        model.addAttribute("priceLists", priceLists);
+
+        return "priceList";
+    }
+
+    @RequestMapping(value = "/reservation", method = RequestMethod.GET)
+    public String reservationAssignment(HttpServletRequest request, @RequestParam(value = "objectId", required = false) String erro, Model model)
+    {
+        String name = request.getUserPrincipal().getName();
+        System.out.println(name+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+        //model.addAttribute(objectId);
+        return "reservation";
     }
 }

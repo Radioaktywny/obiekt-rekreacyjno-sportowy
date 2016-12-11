@@ -10,7 +10,7 @@ INSERT INTO `obiekt`(`nazwa`, `opis`)
 VALUES ('Basen', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m');
 
 INSERT INTO `obiekt`(`nazwa`, `opis`)
-VALUES ('Mała sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozłożenia siatki do siatkówkim oraz 8 stołów do tenisa stołowego');
+VALUES ('Mala sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozlożenia siatki do siatkówki oraz 8 stolów do tenisa stolowego');
 
 INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
 `wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
@@ -18,14 +18,14 @@ VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Basen'), 80, 100, 100, 150, 
 
 INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
 `wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
-VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Mała sala gimnastyczna'), 45, 60, 60, 80, null, null, null, '17:00');
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Mala sala gimnastyczna'), 45, 60, 60, 80, null, null, null, '17:00');
 
 INSERT INTO `czas_otwarcia_obiektu`(`id_obiektu`, `poniedzialek_otwarcie`, `poniedzialek_zamkniecie`, `wtorek_otwarcie`, `wtorek_zamkniecie`, `sroda_otwarcie`, `sroda_zamkniecie`, `czwartek_otwarcie`, `czwartek_zamkniecie`, `piatek_otwarcie`, `piatek_zamkniecie`, `sobota_otwarcie`, `sobota_zamkniecie`, `niedziela_otwarcie`, `niedziela_zamkniecie`)
 VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Basen'), '06:00', '23:00', '06:00', '23:00', '06:00', '23:00', '06:00', '23:00', '06:00', '23:00', '07:30', '24:00', '07:30', '24:00');
 
 
 INSERT INTO `czas_otwarcia_obiektu`(`id_obiektu`, `poniedzialek_otwarcie`, `poniedzialek_zamkniecie`, `wtorek_otwarcie`, `wtorek_zamkniecie`, `sroda_otwarcie`, `sroda_zamkniecie`, `czwartek_otwarcie`, `czwartek_zamkniecie`, `piatek_otwarcie`, `piatek_zamkniecie`, `sobota_otwarcie`, `sobota_zamkniecie`, `niedziela_otwarcie`, `niedziela_zamkniecie`)
-VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Mała sala gimnastyczna'), '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '10:30', '24:00', '10:30', '24:00');
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Mala sala gimnastyczna'), '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '10:30', '24:00', '10:30', '24:00');
 
 # username : administrator, password administrator
 # username : user123, password user123

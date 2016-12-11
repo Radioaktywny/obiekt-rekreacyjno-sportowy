@@ -51,3 +51,26 @@ ul>li>a{
 #aboutUsButton:hover{
 	background-color: #b2b2ff;
 }
+
+#swimPriceSection{
+
+	background-image: url("../img/basen.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 600px;
+}
+
+#gymSection{
+
+	background-image: url("../img/silownia.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
