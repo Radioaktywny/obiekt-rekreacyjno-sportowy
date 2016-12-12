@@ -156,7 +156,7 @@
                                                     </thead>
                                                     <tbody style="background-color: white;">
                                                     <c:set var="count" value="0" scope="page" />
-                                                    <c:if test="${not empty listsofReervation}">
+                                                    <c:if test="${not empty listsofReservation}">
                                                         <c:forEach var="listValue" items="${listsofReservation}">
                                                             <c:set var="count" value="${count + 1}" scope="page"/>
                                                             <tr >

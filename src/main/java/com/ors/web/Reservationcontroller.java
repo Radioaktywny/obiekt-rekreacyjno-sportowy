@@ -60,6 +60,6 @@ public class Reservationcontroller {
         reservationService.save(reservation);
         // Trzeba dodać walidacje co w wypadku jak juz istnieje taka rezerwacja
         System.out.print(reservation.toString());
-        return "userProfileReservation";
+        return "index";
     }
 }
