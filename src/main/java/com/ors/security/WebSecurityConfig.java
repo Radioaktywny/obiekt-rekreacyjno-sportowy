@@ -35,7 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .permitAll()
                 .and()
-                .logout()
+                .logout().logoutSuccessUrl("/")
                 .permitAll();
     }
     //JAKOGOS WKURWIA SPRING SECURITY TO POLECAM METODE PONIZEJ DOBRA W CHUJ

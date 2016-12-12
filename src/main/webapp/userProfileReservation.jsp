@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: DuduŚ
-  Date: 2016-12-07
-  Time: 22:01
+  Date: 2016-12-12
+  Time: 11:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -105,19 +105,19 @@
     <div class="container">
         <div class="col-lg-3 col-lg-offset-1">
 
-                <div class="panel-custom-container" >
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><a href="/userProfile">Profil</a> </h3>
-                        </div>
-                        <div class="panel-body">
-                            <a href="/userProfileReservation">Rezerwacje</a>
-                        </div>
-                        <div class="panel-body">
-                            <a href="/userProfileSettings">Zaawansowane</a>
-                        </div>
+            <div class="panel-custom-container" >
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="/userProfile">Profil</a>
+                    </div>
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a> </h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="/userProfileSettings">Zaawansowane</a>
                     </div>
                 </div>
+            </div>
 
         </div>
         <div class="col-lg-7">
@@ -141,46 +141,38 @@
                                             <h4 style="color:#6666FF;">${user.username} </h4></span>
                                             <span>${user.role} </p></span>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <hr style="margin:5px 0 5px 0;">
+                                        <div class="col-lg-12">
+                                            <div class="reservationsContent">
+                                                <h4 style="text-align: left; padding-left: 5px;">Lista rezerwacji</h4>
+                                                <table class="table table-bordered" style=" font-size: 13px;">
+                                                    <thead>
+                                                    <tr class="active">
+                                                        <th>#</th>
+                                                        <th>Obiekt sportowy</th>
+                                                        <th>Dzień rezerwacji</th>
+                                                        <th>Godzina rezerwacji</th>
+                                                        <th>Godzina zakończenia</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody style="background-color: white;">
+                                                    <c:set var="count" value="0" scope="page" />
+                                                    <c:if test="${not empty listsofReervation}">
+                                                        <c:forEach var="listValue" items="${listsofReservation}">
+                                                            <c:set var="count" value="${count + 1}" scope="page"/>
+                                                            <tr >
+                                                                <th><c:out value="count"></c:out></th>
+                                                                <th>${listValue.objectId}</th>
+                                                                <th>${listValue.dayOfReservation}</th>
+                                                                <th>${listValue.hourOfReservation}</th>
+                                                                <th>${listValue.hourOfEndReservation}</th>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:if>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
-                                        <div class="col-sm-5 col-xs-6 tital ">Login:</div>
-                                        <div class="col-sm-7">${user.username} </div>
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Hasło:</div>
-                                        <div class="col-sm-7">${user.password} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Adres email:</div>
-                                        <div class="col-sm-7">${user.email} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Telefon:</div>
-                                        <div class="col-sm-7">${user.numberOfPhone} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Ulica:</div>
-                                        <div class="col-sm-7">${user.street} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Miasto:</div>
-                                        <div class="col-sm-7">${user.town} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Kod pocztowy:</div>
-                                        <div class="col-sm-7">${user.postKey} </div>
                                     </div>
                                 </div>
                             </div>
