@@ -5,6 +5,7 @@ package com.ors.web;
  */
 
 import com.ors.model.User;
+import com.ors.service.PriceListService;
 import com.ors.service.SecurityService;
 import com.ors.service.UserService;
 import com.ors.validator.UserValidator;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class UserController {
     @Autowired
@@ -26,6 +29,9 @@ public class UserController {
 
     @Autowired
     private UserValidator userValidator;
+
+    @Autowired
+    private PriceListService priceListService;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String welcome(Model model) {
@@ -66,8 +72,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/userProfile", method = RequestMethod.GET)
-    public String userProfile(Model model) {
+    public String userProfile(Model model, HttpServletRequest request) {
 
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("user", user);
         return "userProfile";
     }
 }
