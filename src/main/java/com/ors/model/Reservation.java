@@ -17,11 +17,11 @@ public class Reservation {
 
     @NotNull
     @Column(name = "id_uzytkownika")
-    private String userId;
+    private Long userId;
 
     @NotNull
     @Column(name = "id_obiektu")
-    private String objectId;
+    private Long objectId;
 
     @NotNull
     @Column(name = "dzien_rezerwacji")
@@ -43,19 +43,19 @@ public class Reservation {
         this.id = id;
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public String getObjectId() {
+    public Long getObjectId() {
         return objectId;
     }
 
-    public void setObjectId(String objectId) {
+    public void setObjectId(Long objectId) {
         this.objectId = objectId;
     }
 

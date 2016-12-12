@@ -97,7 +97,7 @@ public class UserController {
 //        System.err.println(reservationService.findByUserId(3L));
 //        System.err.println(reservationService.findAllReservationForUser(user));
     // Poniżej powinna reservationService.findByUserId(user.getId())); ale nie działa :(
-        model.addAttribute("listsofReservation" , reservationService.findAll());
+        model.addAttribute("listsofReservation" , reservationService.findByUserId(user.getId()));
         model.addAttribute("user", user);
 
         return "userProfileReservation";
