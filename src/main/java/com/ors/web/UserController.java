@@ -33,6 +33,10 @@ public class UserController {
     @Autowired
     private PriceListService priceListService;
 
+    //TU CHCE TE REZERWACJE
+ //   @Autowired
+ //   private PriceListService priceListService;
+
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String welcome(Model model) {
         return "index";
@@ -77,5 +81,23 @@ public class UserController {
         User user = priceListService.getUser(request.getUserPrincipal().getName());
         model.addAttribute("user", user);
         return "userProfile";
+    }
+
+    @RequestMapping(value = "/userProfileReservation", method = RequestMethod.GET)
+    public String userProfileReservation(Model model, HttpServletRequest request) {
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("reservationList" , "TU ZIOMEK MI WRZUCISZ TA LISTE OK ( WYSZUKIWANA PO ID UZYTKOWNIKA)");
+        model.addAttribute("user", user);
+
+        return "userProfileReservation";
+    }
+
+    @RequestMapping(value = "/userProfileSettings", method = RequestMethod.GET)
+    public String userProfileSettings(Model model, HttpServletRequest request) {
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("user", user);
+        return "userProfileSettings";
     }
 }
