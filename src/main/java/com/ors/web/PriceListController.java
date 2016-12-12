@@ -30,19 +30,8 @@ public class PriceListController
     {
         List<PriceList> priceLists = priceListService.findAll();
 
-        System.out.println("PRICELIST");
         model.addAttribute("priceLists", priceLists);
 
         return "priceList";
-    }
-
-    @RequestMapping(value = "/reservation", method = RequestMethod.GET)
-    public String reservationAssignment(HttpServletRequest request, @RequestParam(value = "objectId", required = false) String erro, Model model)
-    {
-        String name = request.getUserPrincipal().getName();
-        System.out.println(name+"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-
-        //model.addAttribute(objectId);
-        return "reservation";
     }
 }

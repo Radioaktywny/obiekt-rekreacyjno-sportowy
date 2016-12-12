@@ -29,7 +29,7 @@
 
         <div class="collapse navbar-collapse col-lg-3 col-md-3 navbar-left" style="height: 150px;">
             <ul class="nav navbar-nav ">
-                <li><a href="#content-home"><img src="resources/img/logo2.png"/></a></li>
+                <li><a href="/"><img src="resources/img/logo2.png"/></a></li>
             </ul>
         </div>
 
@@ -45,9 +45,6 @@
             <div class="col-lg-12" style="height: 65px;">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills text-header  navbar-right">
-                        <li role="presentation"><a href="#content-about-scroll">
-                            <div style="color: black;">o nas</div>
-                        </a></li>
                         <li role="presentation"><a href="#content-about">
                             <div style="color: black;">aktualności</div>
                         </a></li>
@@ -116,6 +113,7 @@
                     <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
                         <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[0].tariffSwitchHour}</strong></h5>
                     </div>
+
 
                 </div>
                 <div class="col-lg-4" style="padding-top: 260px; ">

@@ -13,7 +13,8 @@ import java.util.List;
 @Service
 public class SeasonPassServiceImpl implements SeasonPassService
 {
-    @Autowired SeasonPassService seasonPassService;
+    @Autowired
+    SeasonPassService seasonPassService;
 
     @Override
     public List<SeasonPass> findByUserId(Long userId)
@@ -26,4 +27,5 @@ public class SeasonPassServiceImpl implements SeasonPassService
     {
         return seasonPassService.findByUserIdAndObjectId(userId, objectId);
     }
+
 }

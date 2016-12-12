@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SecurityServiceImpl implements SecurityService{
+
     @Autowired
     private AuthenticationManager authenticationManager;
 
@@ -42,4 +43,5 @@ public class SecurityServiceImpl implements SecurityService{
             logger.debug(String.format("Auto login %s successfully!", username));
         }
     }
+
 }
