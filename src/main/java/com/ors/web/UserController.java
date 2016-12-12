@@ -4,12 +4,15 @@ package com.ors.web;
  * Created by Marcin on 05.12.2016.
  */
 
+import com.ors.model.Reservation;
 import com.ors.model.User;
 import com.ors.service.PriceListService;
+import com.ors.service.ReservationService;
 import com.ors.service.SecurityService;
 import com.ors.service.UserService;
 import com.ors.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -34,6 +38,8 @@ public class UserController {
     private PriceListService priceListService;
 
     //TU CHCE TE REZERWACJE
+    @Autowired
+    private ReservationService reservationService;
  //   @Autowired
  //   private PriceListService priceListService;
 
@@ -87,7 +93,11 @@ public class UserController {
     public String userProfileReservation(Model model, HttpServletRequest request) {
 
         User user = priceListService.getUser(request.getUserPrincipal().getName());
-        model.addAttribute("reservationList" , "TU ZIOMEK MI WRZUCISZ TA LISTE OK ( WYSZUKIWANA PO ID UZYTKOWNIKA)");
+
+//        System.err.println(reservationService.findByUserId(3L));
+//        System.err.println(reservationService.findAllReservationForUser(user));
+    // Poniżej powinna reservationService.findByUserId(user.getId())); ale nie działa :(
+        model.addAttribute("reservationList" , reservationService.findAll());
         model.addAttribute("user", user);
 
         return "userProfileReservation";

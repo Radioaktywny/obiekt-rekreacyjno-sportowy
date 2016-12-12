@@ -58,7 +58,8 @@ public class Reservationcontroller {
     @RequestMapping(value = "/reservation", method = RequestMethod.POST)
     public String reservationAssignment(@ModelAttribute("reservationForm") Reservation reservation, BindingResult bindingResult, Model model) {
         reservationService.save(reservation);
+        // Trzeba dodać walidacje co w wypadku jak juz istnieje taka rezerwacja
         System.out.print(reservation.toString());
-        return "reservation";
+        return "userProfileReservation";
     }
 }
