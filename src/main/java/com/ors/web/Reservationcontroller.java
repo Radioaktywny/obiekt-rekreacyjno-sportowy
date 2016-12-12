@@ -5,6 +5,7 @@ import com.ors.model.Object;
 import com.ors.service.ObjectDutyHoursService;
 import com.ors.service.ObjectService;
 import com.ors.service.PriceListService;
+import com.ors.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class Reservationcontroller {
 
+
+
     @Autowired
     private PriceListService priceListService;
 
@@ -31,6 +34,9 @@ public class Reservationcontroller {
 
     @Autowired
     private ObjectDutyHoursService objectDutyHoursService;
+
+    @Autowired
+    private ReservationService reservationService;
 
     @RequestMapping(value = "/reservation", method = RequestMethod.GET)
     public String reservationAssignment(HttpServletRequest request, @RequestParam(value = "objectId", required = false) String objectId, Model model) {
@@ -51,8 +57,7 @@ public class Reservationcontroller {
 
     @RequestMapping(value = "/reservation", method = RequestMethod.POST)
     public String reservationAssignment(@ModelAttribute("reservationForm") Reservation reservation, BindingResult bindingResult, Model model) {
-
-
+        reservationService.save(reservation);
         System.out.print(reservation.toString());
         return "reservation";
     }

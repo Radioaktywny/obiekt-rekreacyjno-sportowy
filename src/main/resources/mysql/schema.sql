@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `rezerwacja` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `id_uzytkownika` bigint(20) NOT NULL,
   `id_obiektu` bigint(20) NOT NULL,
-  `dzien_rezerwacji` date NOT NULL,
+  `dzien_rezerwacji` varchar(16) NOT NULL,
   `godzina_rezerwacji` varchar(10) NOT NULL,
   `godzina_zakonczenia_rezerwacji` varchar(10) NOT NULL,
   PRIMARY KEY (`id`),

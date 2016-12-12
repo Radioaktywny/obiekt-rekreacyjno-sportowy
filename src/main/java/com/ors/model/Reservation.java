@@ -1,13 +1,13 @@
 package com.ors.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
  * Created by DuduŚ on 2016-12-12.
  */
+@Entity
+@Table(name = "rezerwacja")
 public class Reservation {
 
     @Id
@@ -32,7 +32,7 @@ public class Reservation {
     private String hourOfReservation;
 
     @NotNull
-    @Column(name = "godzina_zakonczenia")
+    @Column(name = "godzina_zakonczenia_rezerwacji")
     private String hourOfEndReservation;
 
     public Long getId() {
