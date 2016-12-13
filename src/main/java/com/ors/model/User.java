@@ -2,6 +2,7 @@ package com.ors.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Created by Marcin on 05.12.2016.
@@ -45,6 +46,14 @@ public class User {
 
     @Column(name = "numer_telefonu")
     private String numberOfPhone;
+
+    @Column(name = "created")
+    private Date createdDate;
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = new Date();
+    }
 
     public Long getId() {
         return id;
@@ -125,4 +134,9 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
 }
