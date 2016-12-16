@@ -82,7 +82,7 @@
                         <li role="presentation"><a href="/priceList">
                             <div style="color: black;">cennik</div>
                         </a></li>
-                        <li role="presentation"><a href="/priceList">
+                        <li role="presentation"><a href="/offer">
                             <div style="color: black;">oferta</div>
                         </a></li>
                         <li role="presentation"><a href="/contact">

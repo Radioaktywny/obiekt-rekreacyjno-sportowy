@@ -84,16 +84,16 @@
             <div class="col-lg-12" style="height: 65px;">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills text-header  navbar-right">
-                        <li role="presentation"><a href="#content-about">
+                        <li role="presentation"><a href="/news">
                             <div style="color: black;">aktualności</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-work">
+                        <li role="presentation"><a href="/priceList">
                             <div style="color: black;">cennik</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-contact">
+                        <li role="presentation"><a href="/offer">
                             <div style="color: black;">oferta</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-contact">
+                        <li role="presentation"><a href="/contact">
                             <div style="color: black;">kontakt</div>
                         </a></li>
                     </ul>

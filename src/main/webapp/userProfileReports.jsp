@@ -76,16 +76,16 @@
             <div class="col-lg-12" style="height: 65px;">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills text-header  navbar-right">
-                        <li role="presentation"><a href="#content-about">
+                        <li role="presentation"><a href="/news">
                             <div style="color: black;">aktualności</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-work">
+                        <li role="presentation"><a href="/priceList">
                             <div style="color: black;">cennik</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-contact">
+                        <li role="presentation"><a href="/offer">
                             <div style="color: black;">oferta</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-contact">
+                        <li role="presentation"><a href="/contact">
                             <div style="color: black;">kontakt</div>
                         </a></li>
                     </ul>
@@ -104,26 +104,22 @@
                         <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
                     </div>
                     <div class="panel-body">
-                        <a href="/userProfileReservation">Rezerwacje</a>
+                        <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a></h3>
                     </div>
                     <div class="panel-body">
-                        <c:if test="${user.role == 'ADMINISTRATOR'}">
-                            <a href="/userProfileSettings">Dodaj aktualność</a>
-                        </c:if>
-                        <c:if test="${user.role == 'User'}">
-                            <a href="/userProfileSettings">Ustawienia</a>
-                        </c:if>
+                        <h3 class="panel-title"><a href=" /userProfileEdit">Ustawienia</a></h3>
                     </div>
                     <c:if test="${user.role == 'ADMINISTRATOR'}">
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/userProfileSettings">Dodaj aktualność</a></h3>
+                        </div>
                         <div class="panel-body">
                             <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
                         </div>
                         <div class="panel-heading">
-
                             <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
                         </div>
                     </c:if>
-
                 </div>
             </div>
 

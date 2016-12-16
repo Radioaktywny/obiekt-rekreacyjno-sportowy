@@ -7,28 +7,28 @@ INSERT INTO obiekt_rekreacyjno_sportowy.uzytkownik(id, nazwa_uzytkownika, haslo,
 VALUES('2','user123','$2a$04$65my72NWs9afeZ88pN95se8w4CpZUcirwQWd5MG5f.vy8leFGRYWu','USER',null,null,null,null,CURRENT_DATE);
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Basen', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+VALUES ('Basen', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m.' , 'resources/img/basen.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Mala sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozlożenia siatki do siatkówki oraz 8 stolów do tenisa stolowego' , 'resources/img/boks.jpg');
+VALUES ('Mala sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozlożenia siatki do siatkówki oraz 8 stolów do tenisa stolowego' , 'resources/img/fitness.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Hala tenisowa', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+VALUES ('Hala tenisowa', 'Hala tenisowa o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m.' , 'resources/img/tenis.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Hala sztuk walki', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/boks.jpg');
+VALUES ('Hala sztuk walki', 'Hala sztuk walki o wymiarach 25m x 50m, tylko dla największych koksów któzy chcą się bić jak pudzianowski ... czyli słąbo.' , 'resources/img/boks.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Sala BJJ', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/bjj.jpg');
+VALUES ('Sala BJJ', 'Sala do brazylijskiego jujitsu. Polecamy wszystkim którzy są gibcy jak koty a są jak sieroty, aby skorzystali z tej ultranowoczesnej salki. Są super prysznice z bateriami nierdzewnymi i masażami pośladkowymi.' , 'resources/img/bjj.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Sauna', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/sauna.jpg');
+VALUES ('Sauna', 'Jeżeli chcesz sięwypocić jak dekarz albo rolnik w polu to zapraszamy do skorzystania z naszej ultranowoczesnej sauny... dla każdego nowego klienta lody Koral gratis.' , 'resources/img/sauna.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Silownia', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+VALUES ('Silownia', 'Tak tak to własnie my tu mamy te ciężary, także nie zwlekaj namów kolege do wspólnego wysiłku i wbijaj.' , 'resources/img/silownia.jpg');
 
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
-VALUES ('Boisko siatkarskie', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+VALUES ('Boisko siatkarskie', 'SAala do siatkówki pełnowymiarowa. Na miejscu jest możliwość wyporzyczenia piłęk i sprzętu sędziowskiego.' , 'resources/img/siatka.jpg');
 
 INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
 `wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)

@@ -100,28 +100,26 @@
 
             <div class="panel-custom-container">
                 <div class="panel panel-default">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h3 class="panel-title"><a href=" /userProfileEdit">Ustawienia</a></h3>
-                        </div>
-                        <c:if test="${user.role == 'ADMINISTRATOR'}">
-                            <div class="panel-body">
-                                <h3 class="panel-title"><a href="/userProfileSettings">Dodaj aktualność</a></h3>
-                            </div>
-                            <div class="panel-body">
-                                <h3 class="panel-heading"><a href="/userProfileMessages">Wiadomości</a></h3>
-                            </div>
-                            <div class="panel-body">
-                                <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
-                            </div>
-                        </c:if>
+                    <div class="panel-body">
+                        <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
                     </div>
+                    <div class="panel-body">
+                        <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <h3 class="panel-heading"><a href=" /userProfileEdit">Ustawienia</a></h3>
+                    </div>
+                    <c:if test="${user.role == 'ADMINISTRATOR'}">
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/userProfileSettings">Dodaj aktualność</a></h3>
+                        </div>
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
+                        </div>
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
+                        </div>
+                    </c:if>
                 </div>
             </div>
 
@@ -150,31 +148,66 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="reservationsContent">
-                                                <h4 style="text-align: left; padding-left: 5px;">Lista wiadomości</h4>
-                                                <table class="table table-bordered" style=" font-size: 13px;">
-                                                    <thead>
-                                                    <tr class="active">
-                                                        <th>#</th>
-                                                        <th>Imię</th>
-                                                        <th>Adres email</th>
-                                                        <th>Treść</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody style="background-color: white;">
-                                                    <c:set var="count" value="0" scope="page"/>
-                                                    <c:if test="${not empty listsOfMessages}">
-                                                        <c:forEach var="listValue" items="${listsOfMessages}">
-                                                            <c:set var="count" value="${count + 1}" scope="page"/>
-                                                            <tr>
-                                                                <th><c:out value="count"></c:out></th>
-                                                                <th>${listValue.contactName}</th>
-                                                                <th>${listValue.contactEmail}</th>
-                                                                <th>${listValue.contactContent}</th>
-                                                            </tr>
-                                                        </c:forEach>
-                                                    </c:if>
-                                                    </tbody>
-                                                </table>
+                                                <form method="POST" action="" class="form-signin">
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12">
+                                                            <label class="col-md-3 control-label"
+                                                                   style="text-align: left; padding-top: 5px;">Zmień
+                                                                email</label>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                    <input type="text" name="userName"
+                                                                           class="form-control"
+                                                                           placeholder="Nowy Email"></input>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                   value="${_csrf.token}"/>
+                                                            <div class="col-lg-5 controls"
+                                                                 style="margin-bottom: 10px; padding-left: 0px;">
+                                                                <input type="submit" name="submit" value="Zmień"
+                                                                       class="btn btn-primary"
+                                                                       style="background-color: #6666FF; width: 100px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h4 style="text-align: left; padding-left: 30px;">Zmień hasło</h4>
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12">
+                                                            <label class="col-md-3 control-label"
+                                                                   style="text-align: left; padding-top: 5px;">Obecne
+                                                                hasło</label>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                    <input type="password" name="password"
+                                                                           class="form-control"
+                                                                           placeholder="Obecne hasło"></input>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <label class="col-md-3 control-label"
+                                                                   style="text-align: left; padding-top: 5px;">Nowe
+                                                                hasło</label>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                    <input type="password" name="password"
+                                                                           class="form-control"
+                                                                           placeholder="Nowe hasło"></input>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                   value="${_csrf.token}"/>
+                                                            <div class="col-lg-5 controls"
+                                                                 style="margin-bottom: 10px; padding-left: 0px;">
+                                                                <input type="submit" name="submit" value="Zmień"
+                                                                       class="btn btn-primary"
+                                                                       style="background-color: #6666FF; width: 100px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
 

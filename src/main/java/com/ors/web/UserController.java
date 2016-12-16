@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -101,9 +102,6 @@ public class UserController {
 
         User user = priceListService.getUser(request.getUserPrincipal().getName());
 
-//        System.err.println(reservationService.findByUserId(3L));
-//        System.err.println(reservationService.findAllReservationForUser(user));
-        // Poniżej powinna reservationService.findByUserId(user.getId())); ale nie działa :(
         model.addAttribute("listsofReservation", reservationService.findByUserId(user.getId()));
         model.addAttribute("user", user);
 
@@ -130,6 +128,23 @@ public class UserController {
         model.addAttribute("newsList", newsService.findAll());
         model.addAttribute("objectList" , objectService.findAll());
         return "userProfileSettings";
+    }
+
+    @RequestMapping(value = "/userProfileEdit", method = RequestMethod.GET)
+    public String userProfileEdit(Model model, HttpServletRequest request) {
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("user", user);
+        return "userProfileEdit";
+    }
+
+    @RequestMapping(value = "/userProfileEdit", method = RequestMethod.POST)
+    public String userProfileEdit(@RequestParam("userName") String name, @RequestParam("password") String password, Model model, HttpServletRequest request) {
+
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("user", user);
+        return "userProfileEdit";
     }
 
 

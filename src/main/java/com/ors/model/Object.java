@@ -23,7 +23,6 @@ public class Object {
     @Column(name = "opis")
     private String description;
 
-
     @Column(name = "zdjecie")
     private String picture;
 
