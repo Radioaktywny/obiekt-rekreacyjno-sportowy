@@ -120,7 +120,7 @@
           </c:choose>
 
               <c:forEach var="object" items="${objectList}">
-                  <c:if test="${object.id == listValue.id}">
+                  <c:if test="${object.id == listValue.objectId}">
                        <img src="${object.picture}">
                   </c:if>
               </c:forEach>
