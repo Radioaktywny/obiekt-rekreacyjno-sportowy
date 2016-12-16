@@ -4,12 +4,10 @@ package com.ors.web;
  * Created by Marcin on 05.12.2016.
  */
 
+import com.ors.model.News;
 import com.ors.model.Reservation;
 import com.ors.model.User;
-import com.ors.service.PriceListService;
-import com.ors.service.ReservationService;
-import com.ors.service.SecurityService;
-import com.ors.service.UserService;
+import com.ors.service.*;
 import com.ors.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
@@ -25,6 +23,13 @@ import java.util.List;
 
 @Controller
 public class UserController {
+
+    @Autowired
+    private NewsService newsService;
+
+    @Autowired
+    private ObjectService objectService;
+
     @Autowired
     private UserService userService;
 
@@ -40,8 +45,8 @@ public class UserController {
     //TU CHCE TE REZERWACJE
     @Autowired
     private ReservationService reservationService;
- //   @Autowired
- //   private PriceListService priceListService;
+    //   @Autowired
+    //   private PriceListService priceListService;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String welcome(Model model) {
@@ -96,8 +101,8 @@ public class UserController {
 
 //        System.err.println(reservationService.findByUserId(3L));
 //        System.err.println(reservationService.findAllReservationForUser(user));
-    // Poniżej powinna reservationService.findByUserId(user.getId())); ale nie działa :(
-        model.addAttribute("listsofReservation" , reservationService.findByUserId(user.getId()));
+        // Poniżej powinna reservationService.findByUserId(user.getId())); ale nie działa :(
+        model.addAttribute("listsofReservation", reservationService.findByUserId(user.getId()));
         model.addAttribute("user", user);
 
         return "userProfileReservation";
@@ -108,6 +113,11 @@ public class UserController {
 
         User user = priceListService.getUser(request.getUserPrincipal().getName());
         model.addAttribute("user", user);
+        model.addAttribute("newsForm", new News());
+        model.addAttribute("newsList", newsService.findAll());
+        model.addAttribute("objectList" , objectService.findAll());
         return "userProfileSettings";
     }
+
+
 }

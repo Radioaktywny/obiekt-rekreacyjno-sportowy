@@ -4,6 +4,9 @@ import com.ors.model.Object;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ors.repository.*;
+
+import java.util.List;
+
 /**
  * Created by cos on 07.12.2016.
  */
@@ -23,6 +26,11 @@ public class ObjectServiceImpl implements ObjectService{
     @Override
     public void save(Object object) {
         //Czy to nam jest potrzebne ?
+    }
+
+    @Override
+    public List<Object> findAll() {
+        return objectRepository.findAll();
     }
 
 

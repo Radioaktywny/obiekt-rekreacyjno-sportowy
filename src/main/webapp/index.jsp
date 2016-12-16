@@ -77,7 +77,7 @@
                         <li role="presentation"><a href="#content-about-scroll">
                             <div style="color: black;">o nas</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-about">
+                        <li role="presentation"><a href="/news">
                             <div style="color: black;">aktualności</div>
                         </a></li>
                         <li role="presentation"><a href="/priceList">

@@ -10,6 +10,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="pl_PL">
 <head>
@@ -53,7 +54,7 @@
                 </div>
             </c:if>
             <ul class="nav navbar-nav navbar-right">
-                <sec:authorize access="hasRole('ROLE_USER')">
+                <sec:authorize access="hasAnyRole('ROLE_USER')">
                     <c:url value="/logout" var="logoutUrl"/>
                     <form action="${logoutUrl}" method="post" id="logoutForm">
                         <input type="hidden" name="${_csrf.parameterName}"
@@ -141,12 +142,101 @@
                                                 <h4 style="color:#6666FF;">${user.username} </h4></span>
                                                 <span>${user.role} </p></span>
                                             </div>
+                                            <c:if test="${user.role == 'ADMINISTRATOR'}">
                                             <div class="col-lg-12">
-                                                <h4 style="text-align: left; padding-left: 5px;">dfsdfds</h4>
+
+                                            <form:form method="POST" modelAttribute="newsForm" class="form-horizontal">
+                                            <fieldset>
+
+                                            <!-- Form Name -->
+                                            <legend>Dodaj aktualność</legend>
+                                            <!-- Text input-->
+                                            <div class="form-group">
+                                              <label class="col-md-4 control-label" for="title">Tytuł aktualności</label>
+                                              <div class="col-md-4">
+                                                 <spring:bind path="title">
+                                                   <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                     <form:input type="text" name="title" path="title" class="form-control input-md" placeholder="Tu wpisz tytuł aktualności"
+                                                       autofocus="true" required="true"></form:input>
+                                                      <form:errors path="title"></form:errors>
+                                                   </div>
+                                                 </spring:bind>
+                                              </div>
+
+                                            </div>
+                                             <!-- Select Basic -->
+                                           <div class="form-group">
+                                             <label class="col-md-4 control-label" for="objectId">Wybierz obiekt</label>
+                                             <div class="col-md-4">
+                                               <form:select type="text" path="objectId" class="form-control">
+                                                 <c:forEach var="listValue" items="${objectList}">
+                                                 <option value="${listValue.id}">${listValue.name}</option>
+                                                 </c:forEach>
+
+                                               </form:select>
+                                             </div>
+                                           </div>
+                                            <!-- Textarea -->
+                                            <div class="form-group">
+                                              <label class="col-md-4 control-label" for="textarea">Opis</label>
+                                              <div class="col-md-4">
+                                                <spring:bind path="description">
+                                                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                    <textarea class="form-control" name="description" path="description" placeholder="Tu wpisz opis" required="true"></textarea>
+                                                     <form:errors path="description"></form:errors>
+                                                 </div>
+                                                </spring:bind>
+                                            <div class="form-group">
+                                              <label class="col-md-4 control-label" for="singlebutton"></label>
+                                              <div class="col-md-4">
+                                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Dodaj</button>
+                                              </div>
+                                            </div>
+                                            </div>
+                                            </fieldset>
+                                            </form:form>
+
+                                     <c:if test="${not empty newsList}">
+                                            <form method="POST" class="form-horizontal" var="selected">
+                                            <fieldset>
+
+                                            <!-- Form Name -->
+                                            <legend>Operacje na aktualność</legend>
+
+                                            <!-- Select Basic -->
+                                            <div class="form-group">
+                                              <label class="col-md-4 control-label" for="selectbasic">Wybierz aktualność</label>
+                                              <div class="col-md-4">
+
+                                                <select id="selectbasic" name="selectbasic" class="form-control">
+                                                    <c:forEach var="listView" items ="${newsList}">
+                                                    <option path="Id" value="${selected = listView.id}">${listView.title}</option>
+                                                    </c:forEach>
+                                                </select>
+
+                                              </div>
+                                            </div>
+                                            <!-- Button -->
+                                            <div class="form-group">
+                                              <label class="col-md-4 control-label" for="singlebutton"></label>
+                                              <div class="col-md-4">
+                                                <button id="singlebutton" name="action" value="save" onClick="/" class="btn btn-primary">Usuń</button>
+                                              </div>
                                             </div>
 
+                                            <!-- Button -->
+                                            <div class="form-group">
+                                              <label class="col-md-4 control-label" for="Edytuj"></label>
+                                              <div class="col-md-4">
+                                                <button id="Edytuj" name="action" value="edit" class="btn btn-primary">Edytuj</button>
+                                              </div>
+                                            </div>
 
+                                            </fieldset>
+                                            </form>
+                                            </c:if>
                                     </div>
+                                     </c:if>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +246,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

@@ -22,6 +22,11 @@ USE `obiekt_rekreacyjno_sportowy`;
 -- Struktura tabeli dla tabeli `cennik`
 --
 
+
+DROP TABLE IF EXISTS `aktualnosci`;
+CREATE TABLE  IF NOT EXISTS `aktualnosci` (`id` bigint(20) NOT NULL AUTO_INCREMENT,`id_obiektu` bigint(20) NOT NULL, tytul VARCHAR(20) NOT NULL , opis VARCHAR(1000), data DATE NOT NULL,  PRIMARY KEY (`id`) ,  KEY `id_obiektu` (`id_obiektu`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 DROP TABLE IF EXISTS `cennik`;
 CREATE TABLE IF NOT EXISTS `cennik` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -112,6 +117,7 @@ CREATE TABLE IF NOT EXISTS `obiekt` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `nazwa` varchar(64) NOT NULL,
   `opis` varchar(255) NOT NULL,
+  `zdjecie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -134,6 +140,12 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   `numer_telefonu` int(13) ,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `aktualnosci`
+--
+
 
 --
 -- Ograniczenia dla zrzutów tabel
@@ -143,7 +155,8 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
 -- Ograniczenia dla tabeli `cennik`
 --
 
-
+ALTER TABLE `aktualnosci`
+   ADD CONSTRAINT `aktualnosci_ibfk_1` FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
 
 ALTER TABLE `cennik`
   ADD FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
@@ -167,3 +180,4 @@ ALTER TABLE `karnet`
 ALTER TABLE `rezerwacja`
   ADD CONSTRAINT `rezerwacja_ibfk_1` FOREIGN KEY (`id_uzytkownika`) REFERENCES `uzytkownik` (`id`),
   ADD CONSTRAINT `rezerwacja_ibfk_2` FOREIGN KEY (`id_obiektu`) REFERENCES `obiekt` (`id`);
+

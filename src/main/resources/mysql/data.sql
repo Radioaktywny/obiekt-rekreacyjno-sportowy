@@ -6,11 +6,11 @@ VALUES('1','administrator','$2a$04$KWeGmrnv.s7rn/zWFN4p/emjZDCdW5pjD6DwsIxaj.GBH
 INSERT INTO obiekt_rekreacyjno_sportowy.uzytkownik(id, nazwa_uzytkownika, haslo, poziom_dostepu, miasto, ulica, kod_pocztowy, numer_telefonu)
 VALUES('2','user123','$2a$04$65my72NWs9afeZ88pN95se8w4CpZUcirwQWd5MG5f.vy8leFGRYWu','USER',null,null,null,null);
 
-INSERT INTO `obiekt`(`nazwa`, `opis`)
-VALUES ('Basen', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m');
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Basen', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
 
-INSERT INTO `obiekt`(`nazwa`, `opis`)
-VALUES ('Mala sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozlożenia siatki do siatkówki oraz 8 stolów do tenisa stolowego');
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Mala sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozlożenia siatki do siatkówki oraz 8 stolów do tenisa stolowego' , 'resources/img/boks.jpg');
 
 INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
 `wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
