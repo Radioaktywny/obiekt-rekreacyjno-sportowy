@@ -2,7 +2,8 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="pl_PL">
 <head>
@@ -15,15 +16,23 @@
     <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="resources/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="resources/css/style.css"/>
-    <link rel="stylesheet" href="resources/css/news.css"/>
     <script src="resources/js/jquery.js"></script>
     <script src="resources/js/bootstrap.min.js"></script>
     <script src="resources/js/script.js"></script>
     <script src="resources/js/scrollReveal.js"></script>
     <script src="resources/js/custom.js"></script>
-    <script src="resources/js/news.js"></script>
 </head>
+<style>
+    body {
+        background: url("/resources/img/nice-girl.jpg") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
 
+
+</style>
 <body>
 
 <div class="navbar navbar-default navbar-fixed-top" style="background-color: white;">
@@ -31,21 +40,21 @@
 
         <div class="collapse navbar-collapse col-lg-3 col-md-3 navbar-left" style="height: 150px;">
             <ul class="nav navbar-nav ">
-                <li><a href="#content-home"><img src="resources/img/logo2.png"/></a></li>
+                <li><a href="/"><img src="resources/img/logo2.png"/></a></li>
             </ul>
         </div>
 
         <div class="col-lg-9 col-md-9 navbar-right" style="height: 130px;">
             <c:if test="${pageContext.request.userPrincipal.name == null}">
-            <div class="col-lg-4 col-lg-offset-8" style="height: 55px; padding-top: 10px;  padding-left: 45px;">
+                <div class="col-lg-4 col-lg-offset-8" style="height: 55px; padding-top: 10px;  padding-left: 45px;">
 
-                <button id="userMenu1" class="btn btn-primary" type="button" style="background-color: #6666FF;">
-                    <a href="/login" style="color: white"><span>Zaloguj się </span></a>
-                </button>
-                <button id="userMenu" class="btn btn-primary" type="button" style="background-color: #6666FF;">
-                    <a href="/registration" style="color: white"><span>Zarejestruj się</span></a>
-                </button>
-            </div>
+                    <button id="userMenu1" class="btn btn-primary" type="button" style="background-color: #6666FF;">
+                        <a href="/login" style="color: white"><span>Zaloguj się </span></a>
+                    </button>
+                    <button id="userMenu" class="btn btn-primary" type="button" style="background-color: #6666FF;">
+                        <a href="/registration" style="color: white"><span>Zarejestruj się</span></a>
+                    </button>
+                </div>
             </c:if>
             <ul class="nav navbar-nav navbar-right">
                 <sec:authorize access="hasRole('ROLE_USER')">
@@ -95,82 +104,56 @@
     </div>
 </div>
 
-<div class="clearfix" />
-</div>
-
-
-<div class="container 2 clearfix">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" >
-
-          <!-- Wrapper for slides -->
-
-
-          <c:if test="${not empty newsList}">
-          <div class="carousel-inner">
-          <c:forEach var="listValue" items="${newsList}">
-          <c:set var="count" value="${count + 1}" scope="page"/>
-          <c:choose>
-              <c:when test="${count == 1}">
-                <div class="item active">
-              </c:when>
-              <c:otherwise>
-                   <div class="item">
-              </c:otherwise>
-          </c:choose>
-
-              <c:forEach var="object" items="${objectList}">
-                  <c:if test="${object.id == listValue.id}">
-                       <img src="${object.picture}">
-                  </c:if>
-              </c:forEach>
-               <div class="carousel-caption">
-                <h4><a href="/priceList">${listValue.title}</a></h4>
-                <p>${listValue.description}<a class="label label-primary" href="/" target="_blank">przeczytaj wiecej</a></p>
-                <p><small>${listValue.data}</small></p>
-              </div>
-            </div><!-- End Item -->
-            </c:forEach>
-
-        </div>
-            <ul class="list-group col-sm-4">
-           <c:forEach var="listValue" items="${newsList}">
-                     <c:set var="count1" value="${count1 + 1}" scope="page"/>
-              <li data-target="#myCarousel" data-slide-to="${count1 - 1}" class="list-group-item">
-              <h4>${listValue.title}</h4>
-              </li>
-           </c:forEach>
-            </ul>
-              <!-- Controls -->
-              <div class="carousel-controls">
-                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                  </a>
-                  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                  </a>
-              </div>
-        </div><!-- End Carousel -->
-      </c:if>
-    </div>
-</div>
-
-
-
-
-<div class="footer">
+<div id="content-contact" style="padding-top: 150px;">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <ul class="nav nav-pills nav-justified">
-                    <li><a href="/" style="color: black;">© 2016 kennyS.</a></li>
-                    <li><a href="#" style="color: black;">Warunki korzystania z serwisu</a></li>
-                    <li><a href="#" style="color: black;">Polityka prywatności</a></li>
-                </ul>
-            </div>
+        <div class="col-md-8 col-md-offset-2 text-center" data-scrollreveal="enter top and move 100px, wait 0.3s" style=" padding-bottom: 20px;">
+            <h1 style="font-family: console;"><div id="red"><strong>Kontakt / Napisz do nas</strong></div></h1>
+        </div>
+
+        <div class="col-md-6 text-justify" data-scrollreveal="enter top and move 100px, wait 0.3s" style=" padding-bottom: 20px;">
+            <h3 style="margin-top: 15px; font-color: black;"><strong>Nasza lokalizacja</strong></br>
+                <hr /><h3>Skarżyńskiego 3, 31-866 Kraków</br>Telefon: +48 070 099 769</br>Email: kennyssport@gmail.com</h3>
+        </div>
+
+        <div class="col-md-6 text-justify" data-scrollreveal="enter top and move 100px, wait 0.3s" style=" padding-bottom: 20px;">
+            <h1 style="font-family: console;"><h3><strong>Napisz wiadomość</strong></br></h3> <hr/>
+
+                <form:form method="POST" modelAttribute="contactForm">
+                    <div class="row">
+                        <div class="form-group col-md-6 ">
+                            <spring:bind path="contactName">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input path="contactName" class="form-control" placeholder="Twoje imię"/>
+                                    <form:errors path="contactName"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+
+                        <div class="form-group col-md-6 ">
+                            <spring:bind path="contactEmail">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:input path="contactEmail" class="form-control" placeholder="Email"/>
+                                    <form:errors path="contactEmail"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12 ">
+                            <spring:bind path="contactContent">
+                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                    <form:textarea path="contactContent" class="form-control" rows="3"  placeholder="Message"/>
+                                    <form:errors path="contactContent"></form:errors>
+                                </div>
+                            </spring:bind>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-default">Wyślij!</button>
+                </form:form>
         </div>
     </div>
 </div>
-</body>
 
+</body>
 </html>

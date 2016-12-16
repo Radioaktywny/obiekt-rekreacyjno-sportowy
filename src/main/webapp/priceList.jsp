@@ -74,16 +74,16 @@
             <div class="col-lg-12" style="height: 65px;">
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav nav-pills text-header  navbar-right">
-                        <li role="presentation"><a href="#content-about">
+                        <li role="presentation"><a href="/news">
                             <div style="color: black;">aktualności</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-work">
+                        <li role="presentation"><a href="/priceList">
                             <div style="color: black;">cennik</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-contact">
+                        <li role="presentation"><a href="/priceList">
                             <div style="color: black;">oferta</div>
                         </a></li>
-                        <li role="presentation"><a href="#content-contact">
+                        <li role="presentation"><a href="/contact">
                             <div style="color: black;">kontakt</div>
                         </a></li>
                     </ul>
@@ -216,11 +216,11 @@
         </div>
     </div>
 
-    <div id="swimPriceSection">
-        <div class="container" style="padding-top: 200px;">
+    <div id="gymSection1">
+        <div class="container" style="padding-top: 80px;">
             <div class="row">
                 <div class="col-lg-8">
-                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px;  text-shadow: 4px 4px white;">Sala gimnastyczna</h1>
+                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px;  text-shadow: 4px 4px white;">Hala tenisowa</h1>
                     <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
                         <table class="table table-bordered">
                             <thead>
@@ -229,31 +229,213 @@
                                 <th>Wynajęcie T2</th>
                                 <th>Wynajęcie WT1</th>
                                 <th>Wynajęcie WT2</th>
-                                <c:if test="${not empty priceLists[0].subscriptionTariffOnePrice}">
+                                <c:if test="${not empty priceLists[2].subscriptionTariffOnePrice}">
                                     <th>Karnet T1</th>
                                 </c:if>
-                                <c:if test="${not empty priceLists[0].subscriptionTariffTwoPrice}">
+                                <c:if test="${not empty priceLists[2].subscriptionTariffTwoPrice}">
                                     <th>Karnet T2</th>
                                 </c:if>
-                                <c:if test="${not empty priceLists[0].oneTimeEntrancePrice}">
+                                <c:if test="${not empty priceLists[2].oneTimeEntrancePrice}">
                                     <th>Wejście jednorazowe</th>
                                 </c:if>
                             </tr>
                             </thead>
                             <tbody style="background-color: white; ">
                             <tr>
-                                <th>${priceLists[0].rentWeekdayTariffOnePrice} zł</th>
-                                <th>${priceLists[0].rentWeekdayTariffTwoPrice} zł</th>
-                                <th>${priceLists[0].rentWeekendTariffOnePrice} zł</th>
-                                <th>${priceLists[0].rentWeekendTariffTwoPrice} zł</th>
-                                <c:if test="${not empty priceLists[0].subscriptionTariffOnePrice}">
-                                    <th>${priceLists[0].subscriptionTariffOnePrice} zł</th>
+                                <th>${priceLists[2].rentWeekdayTariffOnePrice} zł</th>
+                                <th>${priceLists[2].rentWeekdayTariffTwoPrice} zł</th>
+                                <th>${priceLists[2].rentWeekendTariffOnePrice} zł</th>
+                                <th>${priceLists[2].rentWeekendTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[2].subscriptionTariffOnePrice}">
+                                    <th>${priceLists[2].subscriptionTariffOnePrice} zł</th>
                                 </c:if>
-                                <c:if test="${not empty priceLists[0].subscriptionTariffTwoPrice}">
-                                    <th>${priceLists[0].subscriptionTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[2].subscriptionTariffTwoPrice}">
+                                    <th>${priceLists[2].subscriptionTariffTwoPrice} zł</th>
                                 </c:if>
-                                <c:if test="${not empty priceLists[0].oneTimeEntrancePrice}">
-                                    <th>${priceLists[0].oneTimeEntrancePrice} zł</th>
+                                <c:if test="${not empty priceLists[2].oneTimeEntrancePrice}">
+                                    <th>${priceLists[2].oneTimeEntrancePrice} zł</th>
+                                </c:if>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[2].tariffSwitchHour}</strong></h5>
+                    </div>
+
+                </div>
+                <div class="col-lg-4" style="padding-top: 260px; ">
+                    <form id="reservationForm2" action="/reservation" method="get">
+                        <input type="hidden" name="objectId" value="${priceLists[2].objectId}" />
+                        <a href="#" onclick="document.getElementById('reservationForm2').submit();" class="btn btn-default"
+                           style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gymSection2">
+        <div class="container" style="padding-top: 80px;">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px; text-shadow: 4px 4px white;">Hala sztuk walki</h1>
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th>Wynajęcie T1</th>
+                                <th>Wynajęcie T2</th>
+                                <th>Wynajęcie WT1</th>
+                                <th>Wynajęcie WT2</th>
+                                <c:if test="${not empty priceLists[3].subscriptionTariffOnePrice}">
+                                    <th>Karnet T1</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[3].subscriptionTariffTwoPrice}">
+                                    <th>Karnet T2</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[3].oneTimeEntrancePrice}">
+                                    <th>Wejście jednorazowe</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody style="background-color: white; ">
+                            <tr>
+                                <th>${priceLists[3].rentWeekdayTariffOnePrice} zł</th>
+                                <th>${priceLists[3].rentWeekdayTariffTwoPrice} zł</th>
+                                <th>${priceLists[3].rentWeekendTariffOnePrice} zł</th>
+                                <th>${priceLists[3].rentWeekendTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[3].subscriptionTariffOnePrice}">
+                                    <th>${priceLists[3].subscriptionTariffOnePrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[3].subscriptionTariffTwoPrice}">
+                                    <th>${priceLists[3].subscriptionTariffTwoPrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[3].oneTimeEntrancePrice}">
+                                    <th>${priceLists[3].oneTimeEntrancePrice} zł</th>
+                                </c:if>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[3].tariffSwitchHour}</strong></h5>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4" style="padding-top: 260px; ">
+                    <form id="reservationForm3" action="/reservation" method="get">
+                        <input type="hidden" name="objectId" value="${priceLists[3].objectId}" />
+                        <a href="#" onclick="document.getElementById('reservationForm3').submit();" class="btn btn-default"
+                           style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gymSection3">
+        <div class="container" style="padding-top: 80px;">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px; text-shadow: 4px 4px white;">Sala BJJ</h1>
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th>Wynajęcie T1</th>
+                                <th>Wynajęcie T2</th>
+                                <th>Wynajęcie WT1</th>
+                                <th>Wynajęcie WT2</th>
+                                <c:if test="${not empty priceLists[4].subscriptionTariffOnePrice}">
+                                    <th>Karnet T1</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[4].subscriptionTariffTwoPrice}">
+                                    <th>Karnet T2</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[4].oneTimeEntrancePrice}">
+                                    <th>Wejście jednorazowe</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody style="background-color: white; ">
+                            <tr>
+                                <th>${priceLists[4].rentWeekdayTariffOnePrice} zł</th>
+                                <th>${priceLists[4].rentWeekdayTariffTwoPrice} zł</th>
+                                <th>${priceLists[4].rentWeekendTariffOnePrice} zł</th>
+                                <th>${priceLists[4].rentWeekendTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[4].subscriptionTariffOnePrice}">
+                                    <th>${priceLists[4].subscriptionTariffOnePrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[4].subscriptionTariffTwoPrice}">
+                                    <th>${priceLists[4].subscriptionTariffTwoPrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[4].oneTimeEntrancePrice}">
+                                    <th>${priceLists[4].oneTimeEntrancePrice} zł</th>
+                                </c:if>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[4].tariffSwitchHour}</strong></h5>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4" style="padding-top: 260px; ">
+                    <form id="reservationForm4" action="/reservation" method="get">
+                        <input type="hidden" name="objectId" value="${priceLists[4].objectId}" />
+                        <a href="#" onclick="document.getElementById('reservationForm4').submit();" class="btn btn-default"
+                           style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gymSection4">
+        <div class="container" style="padding-top: 80px;">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px; text-shadow: 4px 4px white;">Sauna</h1>
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th>Wynajęcie T1</th>
+                                <th>Wynajęcie T2</th>
+                                <th>Wynajęcie WT1</th>
+                                <th>Wynajęcie WT2</th>
+                                <c:if test="${not empty priceLists[5].subscriptionTariffOnePrice}">
+                                    <th>Karnet T1</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[5].subscriptionTariffTwoPrice}">
+                                    <th>Karnet T2</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[5].oneTimeEntrancePrice}">
+                                    <th>Wejście jednorazowe</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody style="background-color: white; ">
+                            <tr>
+                                <th>${priceLists[5].rentWeekdayTariffOnePrice} zł</th>
+                                <th>${priceLists[5].rentWeekdayTariffTwoPrice} zł</th>
+                                <th>${priceLists[5].rentWeekendTariffOnePrice} zł</th>
+                                <th>${priceLists[5].rentWeekendTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[5].subscriptionTariffOnePrice}">
+                                    <th>${priceLists[5].subscriptionTariffOnePrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[5].subscriptionTariffTwoPrice}">
+                                    <th>${priceLists[5].subscriptionTariffTwoPrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[5].oneTimeEntrancePrice}">
+                                    <th>${priceLists[5].oneTimeEntrancePrice} zł</th>
                                 </c:if>
                             </tr>
                             </tbody>
@@ -264,10 +446,136 @@
                         <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[0].tariffSwitchHour}</strong></h5>
                     </div>
 
+
                 </div>
-                <div class="col-lg-4" style="padding-top: 200px; ">
-                    <a href="/rezerwacja" class="btn btn-default"
-                       style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                <div class="col-lg-4" style="padding-top: 260px; ">
+                    <form id="reservationForm5" action="/reservation" method="get">
+                        <input type="hidden" name="objectId" value="${priceLists[5].objectId}" />
+                        <a href="#" onclick="document.getElementById('reservationForm5').submit();" class="btn btn-default"
+                           style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gymSection5">
+        <div class="container" style="padding-top: 80px;">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px; text-shadow: 4px 4px white;">Boisko piłkarskie</h1>
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th>Wynajęcie T1</th>
+                                <th>Wynajęcie T2</th>
+                                <th>Wynajęcie WT1</th>
+                                <th>Wynajęcie WT2</th>
+                                <c:if test="${not empty priceLists[6].subscriptionTariffOnePrice}">
+                                    <th>Karnet T1</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[6].subscriptionTariffTwoPrice}">
+                                    <th>Karnet T2</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[6].oneTimeEntrancePrice}">
+                                    <th>Wejście jednorazowe</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody style="background-color: white; ">
+                            <tr>
+                                <th>${priceLists[6].rentWeekdayTariffOnePrice} zł</th>
+                                <th>${priceLists[6].rentWeekdayTariffTwoPrice} zł</th>
+                                <th>${priceLists[6].rentWeekendTariffOnePrice} zł</th>
+                                <th>${priceLists[6].rentWeekendTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[6].subscriptionTariffOnePrice}">
+                                    <th>${priceLists[6].subscriptionTariffOnePrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[6].subscriptionTariffTwoPrice}">
+                                    <th>${priceLists[6].subscriptionTariffTwoPrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[6].oneTimeEntrancePrice}">
+                                    <th>${priceLists[6].oneTimeEntrancePrice} zł</th>
+                                </c:if>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[0].tariffSwitchHour}</strong></h5>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4" style="padding-top: 260px; ">
+                    <form id="reservationForm6" action="/reservation" method="get">
+                        <input type="hidden" name="objectId" value="${priceLists[6].objectId}" />
+                        <a href="#" onclick="document.getElementById('reservationForm6').submit();" class="btn btn-default"
+                           style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="gymSection6">
+        <div class="container" style="padding-top: 80px;">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h1 style="font-family: 'Audiowide', cursive; font-size: 50px; color: #101010; padding-bottom: 40px; text-shadow: 4px 4px white;">Boisko siatkarskie</h1>
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr class="active">
+                                <th>Wynajęcie T1</th>
+                                <th>Wynajęcie T2</th>
+                                <th>Wynajęcie WT1</th>
+                                <th>Wynajęcie WT2</th>
+                                <c:if test="${not empty priceLists[7].subscriptionTariffOnePrice}">
+                                    <th>Karnet T1</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[7].subscriptionTariffTwoPrice}">
+                                    <th>Karnet T2</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[7].oneTimeEntrancePrice}">
+                                    <th>Wejście jednorazowe</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody style="background-color: white; ">
+                            <tr>
+                                <th>${priceLists[7].rentWeekdayTariffOnePrice} zł</th>
+                                <th>${priceLists[7].rentWeekdayTariffTwoPrice} zł</th>
+                                <th>${priceLists[7].rentWeekendTariffOnePrice} zł</th>
+                                <th>${priceLists[7].rentWeekendTariffTwoPrice} zł</th>
+                                <c:if test="${not empty priceLists[7].subscriptionTariffOnePrice}">
+                                    <th>${priceLists[7].subscriptionTariffOnePrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[7].subscriptionTariffTwoPrice}">
+                                    <th>${priceLists[7].subscriptionTariffTwoPrice} zł</th>
+                                </c:if>
+                                <c:if test="${not empty priceLists[7].oneTimeEntrancePrice}">
+                                    <th>${priceLists[7].oneTimeEntrancePrice} zł</th>
+                                </c:if>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel panel-default" style="box-shadow: 10px 10px 5px #cde6ec;">
+                        <h5 style="color: red"><strong>Zmiana taryfy o godzinie: ${priceLists[7].tariffSwitchHour}</strong></h5>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4" style="padding-top: 260px; ">
+                    <form id="reservationForm7" action="/reservation" method="get">
+                        <input type="hidden" name="objectId" value="${priceLists[7].objectId}" />
+                        <a href="#" onclick="document.getElementById('reservationForm7').submit();" class="btn btn-default"
+                           style="font-size: 20px; box-shadow: 10px 10px 5px #cde6ec;">Rezerwacja</a>
+                    </form>
                 </div>
             </div>
         </div>

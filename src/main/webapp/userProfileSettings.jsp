@@ -106,16 +106,31 @@
     <div class="container">
         <div class="col-lg-3 col-lg-offset-1">
 
-            <div class="panel-custom-container" >
+            <div class="panel-custom-container">
                 <div class="panel panel-default">
-                    <div class="panel-body">
-                        <a href="/userProfile">Profil</a>
+                    <div class="panel-doby">
+                        <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
                     </div>
                     <div class="panel-body">
-                        <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a> </h3>
+                        <a href="/userProfileReservation">Rezerwacje</a>
                     </div>
                     <div class="panel-heading">
-                        <a href="/userProfileSettings">Zaawansowane</a>
+                        <c:if test="${user.role == 'ADMINISTRATOR'}">
+                            <a href="/userProfileSettings">Dodaj aktualność</a>
+                        </c:if>
+                        <c:if test="${user.role == 'User'}">
+                            <a href="/userProfileSettings">Ustawienia</a>
+                        </c:if>
+                    </div>
+                    <div class="panel-body">
+                        <c:if test="${user.role == 'ADMINISTRATOR'}">
+                            <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
+                        </c:if>
+                    </div>
+                    <div class="panel-body">
+                        <c:if test="${user.role == 'ADMINISTRATOR'}">
+                            <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -132,111 +147,134 @@
                                         <div class="col-sm-6">
                                             <div align="center"><img alt="User Pic"
                                                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-                                                                     id="profile-image1" class="img-circle img-responsive">
+                                                                     id="profile-image1"
+                                                                     class="img-circle img-responsive">
 
                                                 <input id="profile-image-upload" class="hidden" type="file">
                                             </div>
                                         </div>
-                                            <br>
-                                            <div class="col-sm-6">
-                                                <h4 style="color:#6666FF;">${user.username} </h4></span>
-                                                <span>${user.role} </p></span>
-                                            </div>
-                                            <c:if test="${user.role == 'ADMINISTRATOR'}">
-                                            <div class="col-lg-12">
+                                        <br>
+                                        <div class="col-sm-6">
+                                            <h4 style="color:#6666FF;">${user.username} </h4></span>
+                                            <span>${user.role} </p></span>
+                                        </div>
+                                        <c:if test="${user.role == 'ADMINISTRATOR'}">
+                                        <div class="col-lg-12">
 
                                             <form:form method="POST" modelAttribute="newsForm" class="form-horizontal">
                                             <fieldset>
 
-                                            <!-- Form Name -->
-                                            <legend>Dodaj aktualność</legend>
-                                            <!-- Text input-->
-                                            <div class="form-group">
-                                              <label class="col-md-4 control-label" for="title">Tytuł aktualności</label>
-                                              <div class="col-md-4">
-                                                 <spring:bind path="title">
-                                                   <div class="form-group ${status.error ? 'has-error' : ''}">
-                                                     <form:input type="text" name="title" path="title" class="form-control input-md" placeholder="Tu wpisz tytuł aktualności"
-                                                       autofocus="true" required="true"></form:input>
-                                                      <form:errors path="title"></form:errors>
-                                                   </div>
-                                                 </spring:bind>
-                                              </div>
+                                                <!-- Form Name -->
+                                                <legend>Dodaj aktualność</legend>
+                                                <!-- Text input-->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="title">Tytuł
+                                                        aktualności</label>
+                                                    <div class="col-md-4">
+                                                        <spring:bind path="title">
+                                                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                <form:input type="text" name="title" path="title"
+                                                                            class="form-control input-md"
+                                                                            placeholder="Tu wpisz tytuł aktualności"
+                                                                            autofocus="true"
+                                                                            required="true"></form:input>
+                                                                <form:errors path="title"></form:errors>
+                                                            </div>
+                                                        </spring:bind>
+                                                    </div>
 
-                                            </div>
-                                             <!-- Select Basic -->
-                                           <div class="form-group">
-                                             <label class="col-md-4 control-label" for="objectId">Wybierz obiekt</label>
-                                             <div class="col-md-4">
-                                               <form:select type="text" path="objectId" class="form-control">
-                                                 <c:forEach var="listValue" items="${objectList}">
-                                                 <option value="${listValue.id}">${listValue.name}</option>
-                                                 </c:forEach>
+                                                </div>
+                                                <!-- Select Basic -->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="objectId">Wybierz
+                                                        obiekt</label>
+                                                    <div class="col-md-4">
+                                                        <form:select type="text" path="objectId" class="form-control">
+                                                            <c:forEach var="listValue" items="${objectList}">
+                                                                <option value="${listValue.id}">${listValue.name}</option>
+                                                            </c:forEach>
 
-                                               </form:select>
-                                             </div>
-                                           </div>
-                                            <!-- Textarea -->
-                                            <div class="form-group">
-                                              <label class="col-md-4 control-label" for="textarea">Opis</label>
-                                              <div class="col-md-4">
-                                                <spring:bind path="description">
-                                                    <div class="form-group ${status.error ? 'has-error' : ''}">
-                                                    <textarea class="form-control" name="description" path="description" placeholder="Tu wpisz opis" required="true"></textarea>
-                                                     <form:errors path="description"></form:errors>
-                                                 </div>
-                                                </spring:bind>
-                                            <div class="form-group">
-                                              <label class="col-md-4 control-label" for="singlebutton"></label>
-                                              <div class="col-md-4">
-                                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">Dodaj</button>
-                                              </div>
-                                            </div>
-                                            </div>
-                                            </fieldset>
-                                            </form:form>
+                                                        </form:select>
+                                                    </div>
+                                                </div>
+                                                <!-- Textarea -->
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="textarea">Opis</label>
+                                                    <div class="col-md-4">
+                                                        <spring:bind path="description">
+                                                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                <textarea class="form-control" name="description"
+                                                                          path="description" placeholder="Tu wpisz opis"
+                                                                          required="true"></textarea>
+                                                                <form:errors path="description"></form:errors>
+                                                            </div>
+                                                        </spring:bind>
+                                                        <div class="form-group">
+                                                            <label class="col-md-4 control-label"
+                                                                   for="singlebutton"></label>
+                                                            <div class="col-md-4">
+                                                                <button id="singlebutton" name="singlebutton"
+                                                                        class="btn btn-primary">Dodaj
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </form:form>
 
-                                     <c:if test="${not empty newsList}">
-                                            <form method="POST" class="form-horizontal" var="selected">
-                                            <fieldset>
+                                                    <c:if test="${not empty newsList}">
+                                                        <form method="POST" class="form-horizontal" var="selected">
+                                                            <fieldset>
 
-                                            <!-- Form Name -->
-                                            <legend>Operacje na aktualność</legend>
+                                                                <!-- Form Name -->
+                                                                <legend>Operacje na aktualność</legend>
 
-                                            <!-- Select Basic -->
-                                            <div class="form-group">
-                                              <label class="col-md-4 control-label" for="selectbasic">Wybierz aktualność</label>
-                                              <div class="col-md-4">
+                                                                <!-- Select Basic -->
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label"
+                                                                           for="selectbasic">Wybierz aktualność</label>
+                                                                    <div class="col-md-4">
 
-                                                <select id="selectbasic" name="selectbasic" class="form-control">
-                                                    <c:forEach var="listView" items ="${newsList}">
-                                                    <option path="Id" value="${selected = listView.id}">${listView.title}</option>
-                                                    </c:forEach>
-                                                </select>
+                                                                        <select id="selectbasic" name="selectbasic"
+                                                                                class="form-control">
+                                                                            <c:forEach var="listView"
+                                                                                       items="${newsList}">
+                                                                                <option path="Id"
+                                                                                        value="${selected = listView.id}">${listView.title}</option>
+                                                                            </c:forEach>
+                                                                        </select>
 
-                                              </div>
-                                            </div>
-                                            <!-- Button -->
-                                            <div class="form-group">
-                                              <label class="col-md-4 control-label" for="singlebutton"></label>
-                                              <div class="col-md-4">
-                                                <button id="singlebutton" name="action" value="save" onClick="/" class="btn btn-primary">Usuń</button>
-                                              </div>
-                                            </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Button -->
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label"
+                                                                           for="singlebutton"></label>
+                                                                    <div class="col-md-4">
+                                                                        <button id="singlebutton" name="action"
+                                                                                value="save" onClick="/"
+                                                                                class="btn btn-primary">Usuń
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
 
-                                            <!-- Button -->
-                                            <div class="form-group">
-                                              <label class="col-md-4 control-label" for="Edytuj"></label>
-                                              <div class="col-md-4">
-                                                <button id="Edytuj" name="action" value="edit" class="btn btn-primary">Edytuj</button>
-                                              </div>
-                                            </div>
+                                                                <!-- Button -->
+                                                                <div class="form-group">
+                                                                    <label class="col-md-4 control-label"
+                                                                           for="Edytuj"></label>
+                                                                    <div class="col-md-4">
+                                                                        <button id="Edytuj" name="action" value="edit"
+                                                                                class="btn btn-primary">Edytuj
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
 
-                                            </fieldset>
-                                            </form>
-                                            </c:if>
+                                                            </fieldset>
+                                                        </form>
+                                                    </c:if>
+                                                </div>
+                                                </c:if>
+                                        </div>
                                     </div>
-                                     </c:if>
                                 </div>
                             </div>
                         </div>
@@ -245,6 +283,5 @@
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

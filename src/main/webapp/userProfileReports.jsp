@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: DuduŚ
-  Date: 2016-12-07
-  Time: 22:01
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -105,33 +98,34 @@
     <div class="container">
         <div class="col-lg-3 col-lg-offset-1">
 
-                <div class="panel-custom-container" >
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
-                        </div>
-                        <div class="panel-body">
-                            <a href="/userProfileReservation">Rezerwacje</a>
-                        </div>
-                        <div class="panel-body">
-                            <c:if test="${user.role == 'ADMINISTRATOR'}">
-                                <a href="/userProfileSettings">Dodaj aktualność</a>
-                            </c:if>
-                            <c:if test="${user.role == 'USER'}">
-                                <a href="/userProfileSettings">Ustawienia</a>
-                            </c:if>
-                        </div>
+            <div class="panel-custom-container">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="/userProfileReservation">Rezerwacje</a>
+                    </div>
+                    <div class="panel-body">
                         <c:if test="${user.role == 'ADMINISTRATOR'}">
-                            <div class="panel-body">
-                                    <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
-                            </div>
-                            <div class="panel-body">
-
-                                    <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
-                            </div>
+                            <a href="/userProfileSettings">Dodaj aktualność</a>
+                        </c:if>
+                        <c:if test="${user.role == 'User'}">
+                            <a href="/userProfileSettings">Ustawienia</a>
                         </c:if>
                     </div>
+                    <c:if test="${user.role == 'ADMINISTRATOR'}">
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
+                        </div>
+                        <div class="panel-heading">
+
+                            <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
+                        </div>
+                    </c:if>
+
                 </div>
+            </div>
 
         </div>
         <div class="col-lg-7">
@@ -145,7 +139,8 @@
                                         <div class="col-sm-6">
                                             <div align="center"><img alt="User Pic"
                                                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-                                                                     id="profile-image1" class="img-circle img-responsive">
+                                                                     id="profile-image1"
+                                                                     class="img-circle img-responsive">
 
                                                 <input id="profile-image-upload" class="hidden" type="file">
                                             </div>
@@ -155,46 +150,36 @@
                                             <h4 style="color:#6666FF;">${user.username} </h4></span>
                                             <span>${user.role} </p></span>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <hr style="margin:5px 0 5px 0;">
+                                        <div class="col-lg-12">
+                                            <div class="reservationsContent">
+                                                <h4 style="text-align: left; padding-left: 5px;">Raporty</h4>
+                                                <table class="table table-bordered" style=" font-size: 13px;">
+                                                    <thead>
+                                                    <tr class="active">
+                                                        <th>#</th>
+                                                        <th>Dzień</th>
+                                                        <th>Miesiąc</th>
+                                                        <th>Rok</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody style="background-color: white;">
+                                                    <c:set var="count" value="0" scope="page"/>
+                                                    <c:if test="${not empty reports}">
+                                                        <c:forEach var="listValue" items="${reports}">
+                                                            <c:set var="count" value="${count + 1}" scope="page"/>
+                                                            <tr>
+                                                                <th><c:out value="count"></c:out></th>
+                                                                <th>${listValue.dayInfo}</th>
+                                                                <th>${listValue.monthInfo}</th>
+                                                                <th>${listValue.yearInfo}</th>
+                                                            </tr>
+                                                        </c:forEach>
+                                                    </c:if>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
 
-                                        <div class="col-sm-5 col-xs-6 tital ">Login:</div>
-                                        <div class="col-sm-7">${user.username} </div>
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Hasło:</div>
-                                        <div class="col-sm-7">${user.password} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Adres email:</div>
-                                        <div class="col-sm-7">${user.email} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Telefon:</div>
-                                        <div class="col-sm-7">${user.numberOfPhone} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Ulica:</div>
-                                        <div class="col-sm-7">${user.street} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Miasto:</div>
-                                        <div class="col-sm-7">${user.town} </div>
-
-                                        <div class="clearfix"></div>
-                                        <div class="bot-border"></div>
-
-                                        <div class="col-sm-5 col-xs-6 tital ">Kod pocztowy:</div>
-                                        <div class="col-sm-7">${user.postKey} </div>
                                     </div>
                                 </div>
                             </div>

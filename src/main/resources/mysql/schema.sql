@@ -147,6 +147,14 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
 -- Struktura tabeli dla tabeli `aktualnosci`
 --
 
+DROP TABLE IF EXISTS `wiadomosci`;
+CREATE TABLE IF NOT EXISTS `wiadomosci` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `kontakt_imie` varchar(50),
+  `kontakt_email` varchar(50),
+  `kontakt_tresc` varchar(250),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Ograniczenia dla zrzutów tabel

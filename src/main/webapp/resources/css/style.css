@@ -74,6 +74,83 @@ ul>li>a{
 	min-height: 480px;
 }
 
+#gymSection1{
+
+	background-image: url("../img/tenis.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
+#gymSection2{
+
+	background-image: url("../img/boks.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
+#gymSection3{
+
+	background-image: url("../img/bjj.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
+#gymSection4{
+
+	background-image: url("../img/sauna.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
+#gymSection5{
+
+	background-image: url("../img/silownia.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
+#gymSection6{
+
+	background-image: url("../img/siatka.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	text-align:center;
+	background-position: center center;
+	min-height: 480px;
+}
+
+#content-contact
+{
+	height: auto;
+	margin-top: 50px;
+	padding-top:20px;
+	text-align:center;
+	background-position: center center;
+	min-height: 700px;
+	width: 100%;
+}
+
 input.hidden {
 	position: absolute;
 	left: -9999px;

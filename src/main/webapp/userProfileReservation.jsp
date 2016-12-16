@@ -105,17 +105,31 @@
     <div class="container">
         <div class="col-lg-3 col-lg-offset-1">
 
-            <div class="panel-custom-container" >
+            <div class="panel-custom-container">
                 <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
+                    </div>
                     <div class="panel-body">
-                        <a href="/userProfile">Profil</a>
+                        <a href="/userProfileReservation">Rezerwacje</a>
                     </div>
                     <div class="panel-heading">
-                        <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a> </h3>
+                        <c:if test="${user.role == 'ADMINISTRATOR'}">
+                            <a href="/userProfileSettings">Dodaj aktualność</a>
+                        </c:if>
+                        <c:if test="${user.role == 'USER'}">
+                            <a href="/userProfileSettings">Ustawienia</a>
+                        </c:if>
                     </div>
-                    <div class="panel-body">
-                        <a href="/userProfileSettings">Zaawansowane</a>
-                    </div>
+                    <c:if test="${user.role == 'ADMINISTRATOR'}">
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
+                        </div>
+                        <div class="panel-body">
+
+                            <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
+                        </div>
+                    </c:if>
                 </div>
             </div>
 
@@ -131,7 +145,8 @@
                                         <div class="col-sm-6">
                                             <div align="center"><img alt="User Pic"
                                                                      src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
-                                                                     id="profile-image1" class="img-circle img-responsive">
+                                                                     id="profile-image1"
+                                                                     class="img-circle img-responsive">
 
                                                 <input id="profile-image-upload" class="hidden" type="file">
                                             </div>
@@ -155,11 +170,11 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody style="background-color: white;">
-                                                    <c:set var="count" value="0" scope="page" />
+                                                    <c:set var="count" value="0" scope="page"/>
                                                     <c:if test="${not empty listsofReservation}">
                                                         <c:forEach var="listValue" items="${listsofReservation}">
                                                             <c:set var="count" value="${count + 1}" scope="page"/>
-                                                            <tr >
+                                                            <tr>
                                                                 <th><c:out value="count"></c:out></th>
                                                                 <th>${listValue.objectId}</th>
                                                                 <th>${listValue.dayOfReservation}</th>

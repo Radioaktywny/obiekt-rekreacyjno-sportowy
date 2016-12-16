@@ -42,7 +42,9 @@ public class UserController {
     @Autowired
     private PriceListService priceListService;
 
-    //TU CHCE TE REZERWACJE
+    @Autowired
+    private ContactService contactService;
+
     @Autowired
     private ReservationService reservationService;
     //   @Autowired
@@ -106,6 +108,17 @@ public class UserController {
         model.addAttribute("user", user);
 
         return "userProfileReservation";
+    }
+
+    @RequestMapping(value = "/userProfileMessages", method = RequestMethod.GET)
+    public String userProfileMessages(Model model, HttpServletRequest request) {
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+
+        model.addAttribute("listsOfMessages", contactService.getContactMess());
+        model.addAttribute("user", user);
+
+        return "userProfileMessages";
     }
 
     @RequestMapping(value = "/userProfileSettings", method = RequestMethod.GET)

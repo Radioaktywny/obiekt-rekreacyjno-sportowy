@@ -12,6 +12,24 @@ VALUES ('Basen', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szeroko�
 INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
 VALUES ('Mala sala gimnastyczna', 'Sala gimnastyczna wymiarach 18m x 40m. W środku znajdują się dwa kosze do koszykówki, osprzęt do rozlożenia siatki do siatkówki oraz 8 stolów do tenisa stolowego' , 'resources/img/boks.jpg');
 
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Hala tenisowa', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Hala sztuk walki', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/boks.jpg');
+
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Sala BJJ', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/bjj.jpg');
+
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Sauna', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/sauna.jpg');
+
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Silownia', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+
+INSERT INTO `obiekt`(`nazwa`, `opis` , `zdjecie`)
+VALUES ('Boisko siatkarskie', 'Basen o wymiarach 25m x 50m, podzielony na 10 torow o szerokości 2,5m' , 'resources/img/basen.jpg');
+
 INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
 `wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
 VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Basen'), 80, 100, 100, 150, 90, 120, 10, '15:00');
@@ -19,6 +37,33 @@ VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Basen'), 80, 100, 100, 150, 
 INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
 `wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
 VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Mala sala gimnastyczna'), 45, 60, 60, 80, null, null, null, '17:00');
+
+INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
+`wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Hala tenisowa'), 80, 100, 100, 150, 90, 120, 10, '15:00');
+
+INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
+`wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Hala sztuk walki'), 45, 60, 60, 80, null, null, null, '17:00');
+
+INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
+`wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Sala BJJ'), 80, 100, 100, 150, 90, 120, 10, '15:00');
+
+INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
+`wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Sauna'), 45, 60, 60, 80, null, null, null, '17:00');
+
+INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
+`wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Silownia'), 80, 100, 100, 150, 90, 120, 10, '15:00');
+
+INSERT INTO `cennik`(`id_obiektu`, `wynajecie_robocze_taryfa_pierwsza`, `wynajecie_robocze_taryfa_druga`, `wynajecie_weekend_taryfa_pierwsza`,
+`wynajecie_weekend_taryfa_druga`, `karnet_taryfa_pierwsza`, `karnet_taryfa_druga`, `jednorazowe_wejscie`, `godzina_zmiany_taryfy`)
+VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Boisko siatkarskie'), 45, 60, 60, 80, null, null, null, '17:00');
+
+
+
 
 INSERT INTO `czas_otwarcia_obiektu`(`id_obiektu`, `poniedzialek_otwarcie`, `poniedzialek_zamkniecie`, `wtorek_otwarcie`, `wtorek_zamkniecie`, `sroda_otwarcie`, `sroda_zamkniecie`, `czwartek_otwarcie`, `czwartek_zamkniecie`, `piatek_otwarcie`, `piatek_zamkniecie`, `sobota_otwarcie`, `sobota_zamkniecie`, `niedziela_otwarcie`, `niedziela_zamkniecie`)
 VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Basen'), '06:00', '23:00', '06:00', '23:00', '06:00', '23:00', '06:00', '23:00', '06:00', '23:00', '07:30', '24:00', '07:30', '24:00');

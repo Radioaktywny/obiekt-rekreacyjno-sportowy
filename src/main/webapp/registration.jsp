@@ -44,11 +44,11 @@
                         <label for="password" class="col-md-3 control-label"  style="text-align: left">Hasło</label>
                         <div class="col-md-4 " style="margin-right: 150px;">
                             <spring:bind path="password">
-                                <div class="form-group ${status.error ? 'has-error' : ''}">
-                                    <form:input type="password" path="password" class="form-control" placeholder="Hasło"></form:input>
-                                    <form:errors path="password"></form:errors>
-                                </div>
-                            </spring:bind>
+                            <div class="form-group ${status.error ? 'has-error' : ''}">
+                                <form:input type="password" path="password" class="form-control" placeholder="Hasło"></form:input>
+                                <form:errors path="password"></form:errors>
+                            </div>
+                        </spring:bind>
                         </div>
                     </div>
 
