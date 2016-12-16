@@ -27,4 +27,24 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    @Override
+    public void updateEmail(String email, Long id){
+        userRepository.updateEmail(email, id);
+    }
+
+    @Override
+    public void updatePassword(String password, Long id){
+        userRepository.updatePassword(password, id);
+    }
+
+    @Override
+    public void updateStreet(String street, Long id){
+        userRepository.updateStreet(street, id);
+    }
+
+    @Override
+    public void updateNumber(String number, Long id){
+        userRepository.updatePhone(number, id);
+    }
 }

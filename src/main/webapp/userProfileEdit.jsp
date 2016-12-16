@@ -148,7 +148,7 @@
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="reservationsContent">
-                                                <form method="POST" action="" class="form-signin">
+                                                <form method="POST" action="/userProfileEditEmail" class="form-signin">
 
                                                     <div class="form-group">
                                                         <div class="col-lg-12">
@@ -166,12 +166,15 @@
                                                                    value="${_csrf.token}"/>
                                                             <div class="col-lg-5 controls"
                                                                  style="margin-bottom: 10px; padding-left: 0px;">
+                                                                <input type="hidden" name="id" value="${user.id}">
                                                                 <input type="submit" name="submit" value="Zmień"
                                                                        class="btn btn-primary"
                                                                        style="background-color: #6666FF; width: 100px;">
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </form>
+                                                <form method="POST" action="/userProfileEditPassword" class="form-signin">
                                                     <h4 style="text-align: left; padding-left: 30px;">Zmień hasło</h4>
                                                     <div class="form-group">
                                                         <div class="col-lg-12">
@@ -179,8 +182,9 @@
                                                                    style="text-align: left; padding-top: 5px;">Obecne
                                                                 hasło</label>
                                                             <div class="col-md-4">
+                                                                <input type="hidden" name="id" value="${user.id}">
                                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                                                    <input type="password" name="password"
+                                                                    <input type="password" name="password1"
                                                                            class="form-control"
                                                                            placeholder="Obecne hasło"></input>
                                                                 </div>
@@ -192,7 +196,7 @@
                                                                 hasło</label>
                                                             <div class="col-md-4">
                                                                 <div class="form-group ${status.error ? 'has-error' : ''}">
-                                                                    <input type="password" name="password"
+                                                                    <input type="password" name="password2"
                                                                            class="form-control"
                                                                            placeholder="Nowe hasło"></input>
                                                                 </div>
@@ -201,6 +205,58 @@
                                                                    value="${_csrf.token}"/>
                                                             <div class="col-lg-5 controls"
                                                                  style="margin-bottom: 10px; padding-left: 0px;">
+                                                                <input type="submit" name="submit" value="Zmień"
+                                                                       class="btn btn-primary"
+                                                                       style="background-color: #6666FF; width: 100px;">
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                                <form method="POST" action="/userProfileEditStreet" class="form-signin">
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12">
+                                                            <label class="col-md-3 control-label"
+                                                                   style="text-align: left; padding-top: 5px;">Zmień
+                                                                ulice</label>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                    <input type="text" name="street"
+                                                                           class="form-control"
+                                                                           placeholder="Ulica"></input>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                   value="${_csrf.token}"/>
+                                                            <div class="col-lg-5 controls"
+                                                                 style="margin-bottom: 10px; padding-left: 0px;">
+                                                                <input type="hidden" name="id" value="${user.id}">
+                                                                <input type="submit" name="submit" value="Zmień"
+                                                                       class="btn btn-primary"
+                                                                       style="background-color: #6666FF; width: 100px;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <form method="POST" action="/userProfileEditPhone" class="form-signin">
+
+                                                    <div class="form-group">
+                                                        <div class="col-lg-12">
+                                                            <label class="col-md-3 control-label"
+                                                                   style="text-align: left; padding-top: 5px;">Zmień nr. telefonu</label>
+                                                            <div class="col-md-4">
+                                                                <div class="form-group ${status.error ? 'has-error' : ''}">
+                                                                    <input type="text" name="phone"
+                                                                           class="form-control"
+                                                                           placeholder="Telefon"></input>
+                                                                </div>
+                                                            </div>
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                   value="${_csrf.token}"/>
+                                                            <div class="col-lg-5 controls"
+                                                                 style="margin-bottom: 10px; padding-left: 0px;">
+                                                                <input type="hidden" name="id" value="${user.id}">
                                                                 <input type="submit" name="submit" value="Zmień"
                                                                        class="btn btn-primary"
                                                                        style="background-color: #6666FF; width: 100px;">

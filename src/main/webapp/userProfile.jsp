@@ -160,9 +160,6 @@
                                         <div class="clearfix"></div>
                                         <div class="bot-border"></div>
 
-                                        <div class="col-sm-5 col-xs-6 tital ">Hasło:</div>
-                                        <div class="col-sm-7">${user.password} </div>
-
                                         <div class="clearfix"></div>
                                         <div class="bot-border"></div>
 

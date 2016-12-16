@@ -10,7 +10,10 @@ import com.ors.model.User;
 import com.ors.service.*;
 import com.ors.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -48,8 +51,9 @@ public class UserController {
 
     @Autowired
     private ReservationService reservationService;
-    //   @Autowired
-    //   private PriceListService priceListService;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String welcome(Model model) {
@@ -126,7 +130,7 @@ public class UserController {
         model.addAttribute("user", user);
         model.addAttribute("newsForm", new News());
         model.addAttribute("newsList", newsService.findAll());
-        model.addAttribute("objectList" , objectService.findAll());
+        model.addAttribute("objectList", objectService.findAll());
         return "userProfileSettings";
     }
 
@@ -138,12 +142,68 @@ public class UserController {
         return "userProfileEdit";
     }
 
-    @RequestMapping(value = "/userProfileEdit", method = RequestMethod.POST)
-    public String userProfileEdit(@RequestParam("userName") String name, @RequestParam("password") String password, Model model, HttpServletRequest request) {
+    @RequestMapping(value = "/userProfileEditEmail", method = RequestMethod.POST)
+    public String userProfileEditEmail(@RequestParam("userName") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
 
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+
+        if (name != null) {
+            userService.updateEmail(name, Long.parseLong(id));
+        }
+
+        model.addAttribute("user", user);
+
+        return "userProfile";
+    }
+
+    @RequestMapping(value = "/userProfileEditStreet", method = RequestMethod.POST)
+    public String userProfileEditStreet(@RequestParam("street") String street, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+
+        if (street != null) {
+            userService.updateStreet(street, Long.parseLong(id));
+        }
 
         User user = priceListService.getUser(request.getUserPrincipal().getName());
         model.addAttribute("user", user);
+
+        return "userProfile";
+    }
+
+    @RequestMapping(value = "/userProfileEditPhone", method = RequestMethod.POST)
+    public String userProfileEditPhone(@RequestParam("phone") String phone, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+
+
+
+        if (phone != null) {
+            userService.updateNumber(phone, Long.parseLong(id));
+        }
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("user", user);
+
+        return "userProfile";
+    }
+
+    @RequestMapping(value = "/userProfileEditPassword", method = RequestMethod.POST)
+    public String userProfileEditPassword(@RequestParam("password1") String password1, @RequestParam("password2") String password2, @RequestParam("id") String id, Model model, HttpServletRequest request) {
+
+        if (password1 != null && password2 != null) {
+            System.out.println(password1+ "  "+password2);
+            String passwordInput = bCryptPasswordEncoder.encode(password1);
+            User user2 = priceListService.getUser(request.getUserPrincipal().getName());
+            System.out.println(passwordInput+" 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            System.out.println(user2.getPassword()+" 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            if (user2.getPassword().equals(passwordInput)) {
+                System.out.println(passwordInput+" 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                String newPassword = bCryptPasswordEncoder.encode(password2);
+                userService.updatePassword(newPassword, Long.parseLong(id));
+
+                User user = priceListService.getUser(request.getUserPrincipal().getName());
+                model.addAttribute("user", user);
+                return "userProfile";
+            }
+
+        }
         return "userProfileEdit";
     }
 

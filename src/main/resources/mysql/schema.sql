@@ -137,7 +137,7 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   `ulica` varchar(64)  ,
   `adres_email` varchar(64)  ,
   `kod_pocztowy` varchar(10) ,
-  `numer_telefonu` int(13) ,
+  `numer_telefonu` varchar(20) ,
   `created` DATE,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

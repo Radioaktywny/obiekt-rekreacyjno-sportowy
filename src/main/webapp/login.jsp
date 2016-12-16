@@ -47,6 +47,7 @@
                                 <input name="username" type="text" class="form-control" placeholder="Nazwa użytkownika"
                                        autofocus="true" style="width: 250px; border-radius: 2px;"/>
                             </div>
+                            <input type="hidden" name="id" value="Norway">
 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <input type="password" name="password"
