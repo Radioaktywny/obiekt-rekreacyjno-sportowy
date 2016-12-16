@@ -43,3 +43,7 @@ jQuery(function($) {
     =====================================================*/
 
 });
+//=============================SCRIPT DO KALENDARZA
+$(function () {
+    $("#datetimepicker").datepicker();
+});

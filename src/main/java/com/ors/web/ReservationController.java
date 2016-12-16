@@ -6,11 +6,13 @@ import com.ors.service.ObjectDutyHoursService;
 import com.ors.service.ObjectService;
 import com.ors.service.PriceListService;
 import com.ors.service.ReservationService;
+import com.ors.validator.ReservationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,9 +24,10 @@ import javax.servlet.http.HttpServletRequest;
  * Created by DuduŚ on 2016-12-11.
  */
 @Controller
-public class Reservationcontroller {
+public class ReservationController {
 
-
+    @Autowired
+    private ReservationValidator validator;
 
     @Autowired
     private PriceListService priceListService;
@@ -57,6 +60,12 @@ public class Reservationcontroller {
 
     @RequestMapping(value = "/reservation", method = RequestMethod.POST)
     public String reservationAssignment(@ModelAttribute("reservationForm") Reservation reservation, BindingResult bindingResult, Model model) {
+        validator.validate(reservation,bindingResult);
+
+        if (bindingResult.hasErrors()) {
+            return "reservation";
+        }
+        System.out.println(reservation);
         reservationService.save(reservation);
         // Trzeba dodać walidacje co w wypadku jak juz istnieje taka rezerwacja
         System.out.print(reservation.toString());
