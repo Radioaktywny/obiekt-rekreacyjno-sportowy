@@ -216,7 +216,7 @@
                                                         </div>
                                                     </div>
                                                     </form:form>
-
+                                                 </fieldset>
                                                     <c:if test="${not empty newsList}">
                                                         <form method="POST" class="form-horizontal" var="selected">
                                                             <fieldset>
