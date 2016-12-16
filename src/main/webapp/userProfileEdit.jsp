@@ -106,8 +106,8 @@
                     <div class="panel-body">
                         <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a></h3>
                     </div>
-                    <div class="panel-body">
-                        <h3 class="panel-heading"><a href=" /userProfileEdit">Ustawienia</a></h3>
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><a href=" /userProfileEdit">Ustawienia</a></h3>
                     </div>
                     <c:if test="${user.role == 'ADMINISTRATOR'}">
                         <div class="panel-body">
