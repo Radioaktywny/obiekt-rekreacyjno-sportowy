@@ -219,6 +219,7 @@
                                                  </fieldset>
                                                     <c:if test="${not empty newsList}">
                                                         <form method="POST" class="form-horizontal" var="selected">
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                                             <fieldset>
 
                                                                 <!-- Form Name -->

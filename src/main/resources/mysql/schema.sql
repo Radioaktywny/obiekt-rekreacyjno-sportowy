@@ -13,7 +13,7 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `obiekt_rekreacyjno_sportowy`
 --
-CREATE DATABASE IF NOT EXISTS `obiekt_rekreacyjno_sportowy` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `obiekt_rekreacyjno_sportowy` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `obiekt_rekreacyjno_sportowy`;
 
 -- --------------------------------------------------------
@@ -24,7 +24,13 @@ USE `obiekt_rekreacyjno_sportowy`;
 
 
 DROP TABLE IF EXISTS `aktualnosci`;
-CREATE TABLE  IF NOT EXISTS `aktualnosci` (`id` bigint(20) NOT NULL AUTO_INCREMENT,`id_obiektu` bigint(20) NOT NULL, tytul VARCHAR(20) NOT NULL , opis VARCHAR(1000), data DATE NOT NULL,  PRIMARY KEY (`id`) ,  KEY `id_obiektu` (`id_obiektu`) ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE  IF NOT EXISTS `aktualnosci` (`id` bigint(20) NOT NULL AUTO_INCREMENT,
+`id_obiektu` bigint(20) NOT NULL,
+ tytul VARCHAR(20) NOT NULL ,
+  opis VARCHAR(1000),
+   data DATE NOT NULL,
+     PRIMARY KEY (`id`) ,
+       KEY `id_obiektu` (`id_obiektu`) ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
 DROP TABLE IF EXISTS `cennik`;
@@ -40,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `cennik` (
   `jednorazowe_wejscie` int(2),
   `godzina_zmiany_taryfy` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -67,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `czas_otwarcia_obiektu` (
   `niedziela_otwarcie` varchar(5),
   `niedziela_zamkniecie` varchar(5),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -84,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `karnet` (
   PRIMARY KEY (`id`),
   KEY `id_obiektu` (`id_obiektu`),
   KEY `id_uzytkownika` (`id_uzytkownika`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -104,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `rezerwacja` (
   PRIMARY KEY (`id`),
   KEY `id_uzytkownika` (`id_uzytkownika`),
   KEY `id_obiektu` (`id_obiektu`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -119,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `obiekt` (
   `opis` varchar(255) NOT NULL,
   `zdjecie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -140,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `uzytkownik` (
   `numer_telefonu` varchar(20) ,
   `created` DATE,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 -- --------------------------------------------------------
 
 --
@@ -154,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `wiadomosci` (
   `kontakt_email` varchar(50),
   `kontakt_tresc` varchar(250),
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Ograniczenia dla zrzutów tabel

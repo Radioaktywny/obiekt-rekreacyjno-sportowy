@@ -5,14 +5,10 @@ package com.ors.web;
  */
 
 import com.ors.model.News;
-import com.ors.model.Reservation;
 import com.ors.model.User;
 import com.ors.service.*;
 import com.ors.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.SystemEnvironmentPropertySource;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import javax.servlet.ServletException;
 
 @Controller
 public class UserController {
@@ -144,15 +140,14 @@ public class UserController {
 
     @RequestMapping(value = "/userProfileEditEmail", method = RequestMethod.POST)
     public String userProfileEditEmail(@RequestParam("userName") String name, @RequestParam("id") String id, Model model, HttpServletRequest request) {
-
         User user = priceListService.getUser(request.getUserPrincipal().getName());
 
         if (name != null) {
             userService.updateEmail(name, Long.parseLong(id));
         }
 
-        model.addAttribute("user", user);
 
+        model.addAttribute("user", user);
         return "userProfile";
     }
 
@@ -193,7 +188,8 @@ public class UserController {
             User user2 = priceListService.getUser(request.getUserPrincipal().getName());
             System.out.println(passwordInput+" 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             System.out.println(user2.getPassword()+" 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-            if (user2.getPassword().equals(passwordInput)) {
+
+            if(bCryptPasswordEncoder.matches(passwordInput,user2.getPassword())) {
                 System.out.println(passwordInput+" 1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 String newPassword = bCryptPasswordEncoder.encode(password2);
                 userService.updatePassword(newPassword, Long.parseLong(id));
