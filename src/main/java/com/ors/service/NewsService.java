@@ -18,5 +18,7 @@ public interface NewsService {
 
     boolean delete(Long id);
 
+    boolean update(News news);
+
     Object findByObjectId(Long objectId);
 }

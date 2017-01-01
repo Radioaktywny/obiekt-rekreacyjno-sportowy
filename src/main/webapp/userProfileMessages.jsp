@@ -100,28 +100,26 @@
 
             <div class="panel-custom-container">
                 <div class="panel panel-default">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a></h3>
-                        </div>
-                        <div class="panel-body">
-                            <h3 class="panel-title"><a href=" /userProfileEdit">Ustawienia</a></h3>
-                        </div>
-                        <c:if test="${user.role == 'ADMINISTRATOR'}">
-                            <div class="panel-body">
-                                <h3 class="panel-title"><a href="/userProfileSettings">Dodaj aktualność</a></h3>
-                            </div>
-                            <div class="panel-body">
-                                <h3 class="panel-heading"><a href="/userProfileMessages">Wiadomości</a></h3>
-                            </div>
-                            <div class="panel-body">
-                                <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
-                            </div>
-                        </c:if>
+                    <div class="panel-body">
+                        <h3 class="panel-title"><a href="/userProfile">Profil</a></h3>
                     </div>
+                    <div class="panel-body">
+                        <h3 class="panel-title"><a href="/userProfileReservation">Rezerwacje</a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <h3 class="panel-title"><a href=" /userProfileEdit">Ustawienia</a></h3>
+                    </div>
+                    <c:if test="${user.role == 'ADMINISTRATOR'}">
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/userProfileSettings">Dodaj aktualność</a></h3>
+                        </div>
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="/userProfileMessages">Wiadomości</a></h3>
+                        </div>
+                        <div class="panel-body">
+                            <h3 class="panel-title"><a href="/reports">Raporty</a></h3>
+                        </div>
+                    </c:if>
                 </div>
             </div>
 

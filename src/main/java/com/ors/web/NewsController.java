@@ -5,19 +5,15 @@ import com.ors.model.User;
 import com.ors.service.NewsService;
 import com.ors.service.ObjectService;
 import com.ors.service.PriceListService;
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -36,41 +32,6 @@ public class NewsController {
     @Autowired
     private PriceListService priceListService;
 
-    @RequestMapping(value = "/userProfileSettings", method = RequestMethod.POST)
-    public String userProfileSettings(@ModelAttribute("newsForm") News news, BindingResult bindingResult, Model model) {
-
-        System.err.println(news.toString());
-        if(bindingResult.hasErrors())
-        {
-            return "error";
-        }
-        news.setData(String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())));
-        newsService.save(news);
-        return "index";
-    }
-
-//    @RequestMapping(value = "/userProfileSettings/delete_news/{id}", method = RequestMethod.DELETE)
-//    public String deleteNews(@PathVariable("id") Long id) {
-//        return newsService.delete(id) ? "userProfileSettings" : "error";
-//
-//    }
-
-    @RequestMapping(value = "/userProfileSettings/dupa", method = RequestMethod.POST)
-    public String deleteNews(@RequestParam String action , @PathVariable(value="id") Long id , Model model) {
-        if(action.equals("edit"))
-        {
-            model.addAttribute("newsForm" , newsService.findById(id));
-            return "userProfileSettings";
-        }else if(action.equals("delete"))
-        {
-            return newsService.delete(id) ? "userProfileSettings" : "error";
-        }
-        return "error";
-    }
-
-
-
-
     @RequestMapping(value = "/news", method = RequestMethod.GET)
     public String userProfileSettings(Model model, HttpServletRequest request) {
         User user = priceListService.getUser(request.getUserPrincipal().getName());
@@ -80,6 +41,49 @@ public class NewsController {
         return "news";
     }
 
+    @RequestMapping(value = "/userProfileSettings", method = RequestMethod.POST)
+    public String userProfileSettings(@ModelAttribute("newsForm") News news, BindingResult bindingResult, Model model) {
+
+        System.err.println(news.toString());
+        if (bindingResult.hasErrors()) {
+            return "error";
+        }
+        news.setData(String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())));
+        if (news.getId() != null) {
+            newsService.update(news);
+        } else
+            newsService.save(news);
+
+        return "redirect:/userProfileSettings";
+    }
+
+    @RequestMapping(value = "/userProfileSettings/edit", method = RequestMethod.POST)
+    public String deleteNews(@RequestParam("type") String action, @RequestParam("selectId") Long id, Model model, Principal principal) {
+
+        if (action.equals("edit")) {
+
+            News news = newsService.findById(id);
+            System.out.println(news.toString());
+            model.addAttribute("newsForm", new News(news.getId(), news.getObjectId()));
+            model.addAttribute("xd",news.getId());
+            model.addAttribute("xd1",news.getId());
+            model.addAttribute("newsList", newsService.findAll());
+            model.addAttribute("objectList", objectService.findAll());
+
+            return "userProfileSettings";
+
+        } else if (action.equals("delete")) {
+            if (newsService.delete(id)) {
+
+                model.addAttribute("newsForm", new News());
+                model.addAttribute("objectList", objectService.findAll());
+                model.addAttribute("newsList", newsService.findAll());
+
+                return "redirect:/userProfileSettings";
+            }
+        }
+        return "error";
+    }
 
 
 }

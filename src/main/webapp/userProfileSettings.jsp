@@ -156,13 +156,14 @@
                                         </div>
                                         <c:if test="${user.role == 'ADMINISTRATOR'}">
                                         <div class="col-lg-12">
-
-                                            <form:form method="POST" modelAttribute="newsForm" class="form-horizontal">
+                                            ${xd}ggggggggggggggggggg${xd1}
+                                        <form:form method="POST" modelAttribute="newsForm" class="form-horizontal">
                                             <fieldset>
 
-                                                <!-- Form Name -->
+                                                <c:if test="${newsForm.id != null}">
+                                                    <form:hidden path="id" value="${newsForm.id}"/>
+                                                </c:if>
                                                 <legend>Dodaj aktualność</legend>
-                                                <!-- Text input-->
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="title">Tytuł
                                                         aktualności</label>
@@ -185,12 +186,16 @@
                                                     <label class="col-md-4 control-label" for="objectId">Wybierz
                                                         obiekt</label>
                                                     <div class="col-md-4">
-                                                        <form:select type="text" path="objectId" class="form-control">
+                                                        <c:if test="${newsForm.objectId == null}">
+                                                        <form:select type="text" path="objectId" itemValue="f" class="form-control">
                                                             <c:forEach var="listValue" items="${objectList}">
                                                                 <option value="${listValue.id}">${listValue.name}</option>
                                                             </c:forEach>
-
                                                         </form:select>
+                                                        </c:if>
+                                                        <c:if test="${newsForm.objectId != null}">
+                                                            ${newsForm.objectId}
+                                                        </c:if>
                                                     </div>
                                                 </div>
                                                 <!-- Textarea -->
@@ -210,28 +215,24 @@
                                                                    for="singlebutton"></label>
                                                             <div class="col-md-4">
                                                                 <button id="singlebutton" name="singlebutton"
-                                                                        class="btn btn-primary">Dodaj
+                                                                        class="btn"  style="background-color:#6666FF; color: white">Dodaj
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     </form:form>
                                                  </fieldset>
-                                                    <c:if test="${not empty newsList}">
-                                                        <form method="POST" class="form-horizontal" var="selected">
+                                                    <c:if test="${not empty newsList}" >
+                                                        <form method="POST" class="form-horizontal" var="selected" action="/userProfileSettings/edit">
                                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                                             <fieldset>
-
-                                                                <!-- Form Name -->
                                                                 <legend>Operacje na aktualność</legend>
-
-                                                                <!-- Select Basic -->
                                                                 <div class="form-group">
                                                                     <label class="col-md-4 control-label"
                                                                            for="selectbasic">Wybierz aktualność</label>
                                                                     <div class="col-md-4">
 
-                                                                        <select id="selectbasic" name="selectbasic"
+                                                                        <select id="selectbasic" name="selectId"
                                                                                 class="form-control">
                                                                             <c:forEach var="listView"
                                                                                        items="${newsList}">
@@ -242,29 +243,13 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <!-- Button -->
                                                                 <div class="form-group">
-                                                                    <label class="col-md-4 control-label"
-                                                                           for="singlebutton"></label>
-                                                                    <div class="col-md-4">
-                                                                        <button id="singlebutton" name="action"
-                                                                                value="save" onClick="/"
-                                                                                class="btn btn-primary">Usuń
-                                                                        </button>
+                                                                    <label class="col-md-4" style="padding-top: 10px;">Wybierz operacje</label>
+                                                                    <div class="col-md-6 col-md-offset-2">
+                                                                        <button name="type" value="delete" class="btn" style="background-color:#6666FF; color: white">Usuń</button>
+                                                                        <button name="type" value="edit" class="btn" style="background-color:#6666FF; color: white">Edytuj</button>
                                                                     </div>
                                                                 </div>
-
-                                                                <!-- Button -->
-                                                                <div class="form-group">
-                                                                    <label class="col-md-4 control-label"
-                                                                           for="Edytuj"></label>
-                                                                    <div class="col-md-4">
-                                                                        <button id="Edytuj" name="action" value="edit"
-                                                                                class="btn btn-primary">Edytuj
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-
                                                             </fieldset>
                                                         </form>
                                                     </c:if>

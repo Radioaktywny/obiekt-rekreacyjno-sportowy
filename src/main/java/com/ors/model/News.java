@@ -34,6 +34,13 @@ public class News {
     @Column
     private String data;
 
+    public News() {
+    }
+
+    public News(Long id, Long objectId) {
+        this.id = id;
+        this.objectId = objectId;
+    }
 
     public Long getObjectId() {
         return objectId;

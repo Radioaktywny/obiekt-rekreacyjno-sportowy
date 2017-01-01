@@ -13,6 +13,7 @@ import java.util.List;
  */
 @Service
 public class NewsServiceImpl implements NewsService {
+
     @Autowired
     NewsRepository newsRepository;
 
@@ -42,6 +43,13 @@ public class NewsServiceImpl implements NewsService {
             return false;
         }
         newsRepository.delete(id);
+        return true;
+    }
+
+    @Override
+    public boolean update(News news) {
+
+        newsRepository.update(news.getTitle(),news.getDescription(),news.getData(),news.getId());
         return true;
     }
 
