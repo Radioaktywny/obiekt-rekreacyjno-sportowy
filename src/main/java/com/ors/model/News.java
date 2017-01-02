@@ -1,10 +1,6 @@
 package com.ors.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -21,6 +17,9 @@ public class News {
     @NotNull
     @Column(name = "id_obiektu")
     private Long objectId;
+
+    @Transient
+    private Long objectId2;
 
     @NotNull
     @Column(name = "tytul")
@@ -40,6 +39,14 @@ public class News {
     public News(Long id, Long objectId) {
         this.id = id;
         this.objectId = objectId;
+    }
+
+    public Long getObjectId2() {
+        return objectId2;
+    }
+
+    public void setObjectId2(Long objectId2) {
+        this.objectId2 = objectId2;
     }
 
     public Long getObjectId() {

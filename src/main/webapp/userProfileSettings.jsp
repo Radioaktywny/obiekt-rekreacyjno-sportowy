@@ -1,15 +1,9 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: DuduŚ
-  Date: 2016-12-12
-  Time: 11:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page session="true" %>
 
 <!DOCTYPE html>
 <html lang="pl_PL">
@@ -20,14 +14,14 @@
     <title>kennyS - centrum sportowe</title>
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet"/>
-    <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="resources/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="resources/css/style.css"/>
-    <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/script.js"></script>
-    <script src="resources/js/scrollReveal.js"></script>
-    <script src="resources/js/custom.js"></script>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/resources/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/resources/css/style.css"/>
+    <script src="/resources/js/jquery.js"></script>
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="/resources/js/script.js"></script>
+    <script src="/resources/js/scrollReveal.js"></script>
+    <script src="/resources/js/custom.js"></script>
 </head>
 
 <body>
@@ -156,14 +150,15 @@
                                         </div>
                                         <c:if test="${user.role == 'ADMINISTRATOR'}">
                                         <div class="col-lg-12">
-                                            ${xd}ggggggggggggggggggg${xd1}
-                                        <form:form method="POST" modelAttribute="newsForm" class="form-horizontal">
+                                        <form:form method="POST" modelAttribute="newsForm" action="/userProfileSettings" class="form-horizontal">
                                             <fieldset>
-
-                                                <c:if test="${newsForm.id != null}">
                                                     <form:hidden path="id" value="${newsForm.id}"/>
-                                                </c:if>
+                                                <c:if test="${newsForm.id == null}">
                                                 <legend>Dodaj aktualność</legend>
+                                                </c:if>
+                                                <c:if test="${newsForm.id != null}">
+                                                    <legend>Edytuj aktualność</legend>
+                                                </c:if>
                                                 <div class="form-group">
                                                     <label class="col-md-4 control-label" for="title">Tytuł
                                                         aktualności</label>
@@ -179,49 +174,47 @@
                                                             </div>
                                                         </spring:bind>
                                                     </div>
-
                                                 </div>
-                                                <!-- Select Basic -->
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="objectId">Wybierz
-                                                        obiekt</label>
+                                                    <label class="col-md-4 control-label" for="objectId">Wybierz obiekt</label>
                                                     <div class="col-md-4">
-                                                        <c:if test="${newsForm.objectId == null}">
+                                                        <c:if test="${objectSelected == null}">
                                                         <form:select type="text" path="objectId" itemValue="f" class="form-control">
                                                             <c:forEach var="listValue" items="${objectList}">
                                                                 <option value="${listValue.id}">${listValue.name}</option>
                                                             </c:forEach>
                                                         </form:select>
                                                         </c:if>
-                                                        <c:if test="${newsForm.objectId != null}">
-                                                            ${newsForm.objectId}
+                                                        <c:if test="${objectSelected != null}">
+                                                            <h4 style="padding-top: 5px; margin: 0px; text-align: left">${objectSelected}</h4>
+                                                            <form:hidden path="objectId2" value="${objectId}"/>
                                                         </c:if>
+
                                                     </div>
                                                 </div>
-                                                <!-- Textarea -->
                                                 <div class="form-group">
-                                                    <label class="col-md-4 control-label" for="textarea">Opis</label>
-                                                    <div class="col-md-4">
+                                                    <label class="col-md-4 control-label">Opis</label>
+                                                    <div class="col-md-8">
                                                         <spring:bind path="description">
                                                             <div class="form-group ${status.error ? 'has-error' : ''}">
-                                                                <textarea class="form-control" name="description"
-                                                                          path="description" placeholder="Tu wpisz opis"
-                                                                          required="true"></textarea>
+                                                                <form:textarea path="description" class="form-control" name="description" rows="8" cols="62"
+                                                                           placeholder="Tu wpisz opis"
+                                                                          required="true"></form:textarea>
                                                                 <form:errors path="description"></form:errors>
                                                             </div>
                                                         </spring:bind>
-                                                        <div class="form-group">
-                                                            <label class="col-md-4 control-label"
-                                                                   for="singlebutton"></label>
-                                                            <div class="col-md-4">
-                                                                <button id="singlebutton" name="singlebutton"
-                                                                        class="btn"  style="background-color:#6666FF; color: white">Dodaj
-                                                                </button>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                    </form:form>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="singlebutton"></label>
+                                                    <div class="col-md-3 col-md-offset-5">
+                                                        <button id="singlebutton" name="singlebutton"
+                                                                class="btn"  style="background-color:#6666FF; color: white">Dodaj
+                                                        </button>
+                                                    </div>
+                                                </div>
                                                  </fieldset>
+                                        </form:form>
                                                     <c:if test="${not empty newsList}" >
                                                         <form method="POST" class="form-horizontal" var="selected" action="/userProfileSettings/edit">
                                                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -244,8 +237,8 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label class="col-md-4" style="padding-top: 10px;">Wybierz operacje</label>
-                                                                    <div class="col-md-6 col-md-offset-2">
+                                                                    <label class="col-md-4  control-label" style="padding-top: 10px;">Wybierz operacje</label>
+                                                                    <div class="col-md-4 col-md-offset-4" style="padding-right: 29px;">
                                                                         <button name="type" value="delete" class="btn" style="background-color:#6666FF; color: white">Usuń</button>
                                                                         <button name="type" value="edit" class="btn" style="background-color:#6666FF; color: white">Edytuj</button>
                                                                     </div>

@@ -1,6 +1,7 @@
 package com.ors.web;
 
 import com.ors.model.News;
+import com.ors.model.Object;
 import com.ors.model.User;
 import com.ors.service.NewsService;
 import com.ors.service.ObjectService;
@@ -33,12 +34,23 @@ public class NewsController {
     private PriceListService priceListService;
 
     @RequestMapping(value = "/news", method = RequestMethod.GET)
-    public String userProfileSettings(Model model, HttpServletRequest request) {
-        User user = priceListService.getUser(request.getUserPrincipal().getName());
+    public String newsBookmark(Model model) {
+
         model.addAttribute("newsForm", new News());
         model.addAttribute("objectList", objectService.findAll());
         model.addAttribute("newsList", newsService.findAll());
         return "news";
+    }
+
+    @RequestMapping(value = "/userProfileSettings", method = RequestMethod.GET)
+    public String userProfileSettings(Model model, HttpServletRequest request) {
+
+        User user = priceListService.getUser(request.getUserPrincipal().getName());
+        model.addAttribute("user", user);
+        model.addAttribute("newsForm", new News());
+        model.addAttribute("newsList", newsService.findAll());
+        model.addAttribute("objectList", objectService.findAll());
+        return "userProfileSettings";
     }
 
     @RequestMapping(value = "/userProfileSettings", method = RequestMethod.POST)
@@ -50,6 +62,8 @@ public class NewsController {
         }
         news.setData(String.valueOf(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date())));
         if (news.getId() != null) {
+            news.setObjectId(news.getObjectId2());
+            System.err.println(news.toString() +" !!!!!!!!!!!!!!!!!!");
             newsService.update(news);
         } else
             newsService.save(news);
@@ -63,10 +77,12 @@ public class NewsController {
         if (action.equals("edit")) {
 
             News news = newsService.findById(id);
-            System.out.println(news.toString());
+            Object object = objectService.findById(news.getObjectId());
+            System.err.println(news.toString() +" !!!!!!!!!!!!!!!!!!");
+            model.addAttribute("objectSelected", object.getName());
+            model.addAttribute("objectId", news.getObjectId());
             model.addAttribute("newsForm", new News(news.getId(), news.getObjectId()));
-            model.addAttribute("xd",news.getId());
-            model.addAttribute("xd1",news.getId());
+            model.addAttribute("user", priceListService.getUser(principal.getName()));
             model.addAttribute("newsList", newsService.findAll());
             model.addAttribute("objectList", objectService.findAll());
 

@@ -119,17 +119,6 @@ public class UserController {
         return "userProfileMessages";
     }
 
-    @RequestMapping(value = "/userProfileSettings", method = RequestMethod.GET)
-    public String userProfileSettings(Model model, HttpServletRequest request) {
-
-        User user = priceListService.getUser(request.getUserPrincipal().getName());
-        model.addAttribute("user", user);
-        model.addAttribute("newsForm", new News());
-        model.addAttribute("newsList", newsService.findAll());
-        model.addAttribute("objectList", objectService.findAll());
-        return "userProfileSettings";
-    }
-
     @RequestMapping(value = "/userProfileEdit", method = RequestMethod.GET)
     public String userProfileEdit(Model model, HttpServletRequest request) {
 
