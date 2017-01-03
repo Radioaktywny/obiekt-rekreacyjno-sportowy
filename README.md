@@ -1,14 +1,15 @@
 # obiekt-rekreacyjno-sportowy
 HOW TO RUN:
-open console in main path 
-in console insert : mvn clean spring-boot:run
+you need to befor lunch the application run localhost MySQL server : username root with no password (this conf you can change in src/main/resources/config/application-mysql.properties)</br>
+open console in main path </br>
+in console insert : mvn clean spring-boot:run</br>
 
-in Intelijj
+in Intelijj</br>
 Maven Projects/Lifecycle run clean, after Plugins/spring-boot run spring-boot:run
 
-main application path: http://localhost:8080/
-login path http://localhost:8080/login
-registration path http://localhost:8080/registration
+main application path: http://localhost:8080/</br>
+login path http://localhost:8080/login</br>
+registration path http://localhost:8080/registration</br>
 
 ___________________________________________________________
 Polish version
