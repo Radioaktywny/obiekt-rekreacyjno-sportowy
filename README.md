@@ -1,7 +1,7 @@
 # obiekt-rekreacyjno-sportowy
 HOW TO RUN:
-you need to befor lunch the application run localhost MySQL server : username root with no password (this conf you can change in src/main/resources/config/application-mysql.properties)</br>
-open console in main path </br>
+you need to before launch the application run MySQL localhost server : username root with no password (this conf you can change in src/main/resources/config/application-mysql.properties)</br>
+without Intelijj :open console in main path </br>
 in console insert : mvn clean spring-boot:run</br>
 
 in Intelijj</br>
