@@ -103,6 +103,7 @@ public class UserController {
         User user = priceListService.getUser(request.getUserPrincipal().getName());
 
         model.addAttribute("listsofReservation", reservationService.findByUserId(user.getId()));
+        model.addAttribute("listsofObjects", objectService.findAll());
         model.addAttribute("user", user);
 
         return "userProfileReservation";

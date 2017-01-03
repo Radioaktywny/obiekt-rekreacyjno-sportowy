@@ -172,8 +172,8 @@
                                                         <c:forEach var="listValue" items="${listsofReservation}">
                                                             <c:set var="count" value="${count + 1}" scope="page"/>
                                                             <tr>
-                                                                <th><c:out value="count"></c:out></th>
-                                                                <th>${listValue.objectId}</th>
+                                                                <th><c:out value="${count}"></c:out></th>
+                                                                <th>${listsofObjects[listValue.objectId].name}</th>
                                                                 <th>${listValue.dayOfReservation}</th>
                                                                 <th>${listValue.hourOfReservation}</th>
                                                                 <th>${listValue.hourOfEndReservation}</th>
