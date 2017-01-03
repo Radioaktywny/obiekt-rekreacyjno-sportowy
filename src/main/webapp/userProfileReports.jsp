@@ -164,7 +164,14 @@
                                                         <c:forEach var="listValue" items="${reports}">
                                                             <c:set var="count" value="${count + 1}" scope="page"/>
                                                             <tr>
-                                                                <th><c:out value="count"></c:out></th>
+                                                             <c:choose>
+                                                            <c:when test="${count == 1}">
+                                                                   <th>Nowi użytkownicy</th>
+                                                               </c:when>
+                                                               <c:otherwise>
+                                                                    <th>Nowe rezerwacje</th>
+                                                               </c:otherwise>
+                                                               </c:choose>
                                                                 <th>${listValue.dayInfo}</th>
                                                                 <th>${listValue.monthInfo}</th>
                                                                 <th>${listValue.yearInfo}</th>
