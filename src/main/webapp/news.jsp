@@ -31,7 +31,7 @@
 
         <div class="collapse navbar-collapse col-lg-3 col-md-3 navbar-left" style="height: 150px;">
             <ul class="nav navbar-nav ">
-                <li><a href="#content-home"><img src="resources/img/logo2.png"/></a></li>
+                <li><a href="/"><img src="resources/img/logo2.png"/></a></li>
             </ul>
         </div>
 
