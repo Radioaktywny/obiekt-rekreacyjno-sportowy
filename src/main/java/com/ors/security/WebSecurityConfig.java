@@ -38,7 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutSuccessUrl("/")
                 .permitAll();
     }
-    //JAKOGOS WKURWIA SPRING SECURITY TO POLECAM METODE PONIZEJ DOBRA W CHUJ
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/obiekt");
