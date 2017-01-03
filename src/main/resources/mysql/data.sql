@@ -73,5 +73,9 @@ INSERT INTO `czas_otwarcia_obiektu`(`id_obiektu`, `poniedzialek_otwarcie`, `poni
 VALUES ((SELECT `id` from `obiekt` where `nazwa` = 'Mala sala gimnastyczna'), '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '08:00', '23:00', '10:30', '24:00', '10:30', '24:00');
 
 
+INSERT INTO `aktualnosci`(`id`, `id_obiektu`, `tytul`, `opis`, `data`) VALUES ('1',(SELECT `id` from `obiekt` where `nazwa` = 'Basen'),'Mega promocja !','Super mega swietny basen
+','2017-01-03')
+
+
 # username : administrator, password administrator
 # username : user123, password user123
